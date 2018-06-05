@@ -1,36 +1,48 @@
-<div class="example-container mat-elevation-z8">
-  <mat-table #table [dataSource]="membro">
+<mat-tab-group>
+  <mat-tab label="Lista de Membros">
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
+    <div class="example-container mat-elevation-z8">
+      <mat-table #table [dataSource]="membro">
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
-      <mat-cell *matCellDef="let item, let i = index"> {{i+1}} </mat-cell>
-    </ng-container>
+        <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
 
-    <ng-container matColumnDef="Nome">
-      <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{item.nome}} </mat-cell>
-    </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
+          <mat-cell *matCellDef="let item, let i = index"> {{i+1}} </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="Cargo">
-      <mat-header-cell *matHeaderCellDef> Cargo </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{item.cargo}} </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="Rol">
+          <mat-header-cell *matHeaderCellDef> N° de Rol </mat-header-cell>
+          <mat-cell *matCellDef="let item"> {{item.id}} </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="Congregação">
-      <mat-header-cell *matHeaderCellDef> Congregação </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{item.congregacao}} </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="Nome">
+          <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+          <mat-cell *matCellDef="let item"> {{item.nome}} </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="Telefone">
-      <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{item.telefone}} </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="Cargo">
+          <mat-header-cell *matHeaderCellDef> Cargo </mat-header-cell>
+          <mat-cell *matCellDef="let item"> {{item.cargo}} </mat-cell>
+        </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
-</div>
+        <ng-container matColumnDef="Congregação">
+          <mat-header-cell *matHeaderCellDef> Congregação </mat-header-cell>
+          <mat-cell *matCellDef="let item"> {{item.congregacao}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Telefone">
+          <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
+          <mat-cell *matCellDef="let item"> {{item.telefone}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+
+  </mat-tab>
+  <mat-tab label="Tab 2">Content 2</mat-tab>
+</mat-tab-group>

@@ -10,7 +10,6 @@ import {MatToolbarModule, MatGridListModule} from '@angular/material';
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-import { MenuModule } from './menu/menu.module';
 
 
 @NgModule({
@@ -27,8 +26,7 @@ import { MenuModule } from './menu/menu.module';
     FormsModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatGridListModule,
-    MenuModule
+    MatGridListModule
 
   ],
   providers: [],

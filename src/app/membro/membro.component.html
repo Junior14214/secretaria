@@ -1,50 +1,107 @@
-<form (submit)="salvar($event)">
-  Nome:
-  <input type="text" [(ngModel)]="membro.nome" name="nome" id="nome">
-  pai:
-  <input type="text" [(ngModel)]="membro.pai" name="pai" id="pai">
-  mae:
-  <input type="text" [(ngModel)]="membro.mae" name="mae" id="mae">
-  sexo:
-  <input type="text" [(ngModel)]="membro.sexo" name="sexo" id="sexo">
-  data de nascimento:
-  <input type="text" [(ngModel)]="membro.data_de_nascimento" name="data_de_nascimento" id="data_de_nascimento">
-  profissao:
-  <input type="text" [(ngModel)]="membro.profissao" name="profissao" id="profissao">
-  telefone:
-  <input type="text" [(ngModel)]="membro.telefone" name="telefone" id="telefone">
-  rg:
-  <input type="text" [(ngModel)]="membro.rg" name="rg" id="rg">
-  cpf:
-  <input type="text" [(ngModel)]="membro.cpf" name="cpf" id="cpf">
-  pais:
-  <input type="text" [(ngModel)]="membro.pais" name="pais" id="pais">
-  naturalidade:
-  <input type="text" [(ngModel)]="membro.naturalidade" name="naturalidade" id="naturalidade">
-  estado_civil:
-  <input type="text" [(ngModel)]="membro.estado_civil" name="estado_civil" id="estado_civil">
-  endereco:
-  <input type="text" [(ngModel)]="membro.endereco" name="endereco" id="endereco">
-  bairro:
-  <input type="text" [(ngModel)]="membro.bairro" name="bairro" id="bairro">
-  cidade:
-  <input type="text" [(ngModel)]="membro.cidade" name="cidade" id="cidade">
-  cep:
-  <input type="text" [(ngModel)]="membro.cep" name="cep" id="cep">
-  batismo_nas_aguas:
-  <input type="text" [(ngModel)]="membro.batismo_nas_aguas" name="batismo_nas_aguas" id="batismo_nas_aguas">
-  batismo_no_espirito_santo:
-  <input type="text" [(ngModel)]="membro.batismo_no_espirito_santo" name="batismo_no_espirito_santo" id="batismo_no_espirito_santo">
-  data_de_inicio:
-  <input type="text" [(ngModel)]="membro.data_de_inicio" name="data_de_inicio" id="data_de_inicio">
-  dirigente:
-  <input type="text" [(ngModel)]="membro.dirigente" name="dirigente" id="dirigente">
-  cargo:
-  <input type="text" [(ngModel)]="membro.cargo" name="cargo" id="cargo">
-  congregacao:
-  <input type="text" [(ngModel)]="membro.congregacao" name="congregacao" id="congregacao">
-  observacao:
-  <input type="text" [(ngModel)]="membro.observacao" name="observacao" id="observacao">
-  <button type="submit">Salvar</button>
-</form>
+<mat-tab-group>
+  <mat-tab label="Cadastro de Membros">
 
+    <form (submit)="salvar($event)" class="formulario">
+      <div class="example-container">
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.nome" name="nome" placeholder="Nome">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.pai" name="pai" placeholder="Pai">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.mae" name="mae" placeholder="Mãe">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.sexo" name="sexo" placeholder="Sexo">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.data_de_nascimento" name="data_de_nascimento" placeholder="Data de Nascimento">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.profissao" name="profissao" placeholder="Profissão">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.telefone" name="telefone" placeholder="Telefone">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.rg" name="rg" placeholder="RG">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.cpf" name="cpf" placeholder="CPF">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.pais" name="pais" placeholder="País">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.naturalidade" name="naturalidade" placeholder="Naturalidade">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.estado_civil" name="estado_civil" placeholder="Estado Civil">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.endereco" name="endereco" placeholder="Endereço">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.bairro" name="bairro" placeholder="Bairro">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.cidade" name="cidade" placeholder="Cidade">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.cep" name="cep" placeholder="CEP">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.batismo_nas_aguas" name="batismo_nas_aguas" placeholder="Batismo nas Águas">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.batismo_no_espirito_santo" name="batismo_no_espirito_santo" placeholder="Batismo no Espírito Santo">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.data_de_inicio" name="data_de_inicio" placeholder="Data de Inicio">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.dirigente" name="dirigente" placeholder="Dirigente">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.cargo" name="cargo" placeholder="Cargo">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [(ngModel)]="membro.congregacao" name="congregacao" placeholder="Congregação">
+        </mat-form-field>
+
+<br>
+
+        <mat-form-field class="textArea">
+          <textarea matInput [(ngModel)]="membro.observacao" name="observacao" placeholder="Observação"></textarea>
+        </mat-form-field>
+      </div>
+      <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored botao">
+        Salvar
+      </button>
+    </form>
+
+  </mat-tab>
+  <mat-tab label="Tab 2">Content 2</mat-tab>
+</mat-tab-group>
