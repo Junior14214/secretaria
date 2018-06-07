@@ -38,6 +38,31 @@
           <mat-cell *matCellDef="let item"> {{item.telefone}} </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="Acao">
+          <mat-header-cell *matHeaderCellDef> Ação </mat-header-cell>
+          <mat-cell *matCellDef="let item">
+
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="editarMembro(item.id)">
+                <mat-icon>create</mat-icon>
+                <span>Editar</span>
+              </button>
+              <button mat-menu-item (click)="excluirMembro(item)">
+                <mat-icon>delete</mat-icon>
+                <span>Excluir</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>create</mat-icon>
+                <span>Disable alerts</span>
+              </button>
+            </mat-menu>
+
+          </mat-cell>
+        </ng-container>
+
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>

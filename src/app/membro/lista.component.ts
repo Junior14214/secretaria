@@ -1,7 +1,8 @@
+import { Router } from '@angular/router';
+import { Membros } from './../model/membro';
 import { MembroService } from './membro.service';
-import { Membros } from './../../model/membro';
 import { Component, OnInit } from '@angular/core';
-import {DataSource} from '@angular/cdk/collections';
+import { DataSource } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-lista',
@@ -12,10 +13,12 @@ export class ListaComponent implements OnInit {
 
   membro: Membros[] = [];
   service: MembroService;
-  displayedColumns = ['position', 'Rol' ,'Nome', 'Cargo', 'Congregação', 'Telefone' ];
+  displayedColumns = ['position', 'Rol', 'Nome', 'Cargo', 'Congregação', 'Telefone', 'Acao'];
+  router: Router;
 
-  constructor(service: MembroService) {
+  constructor(service: MembroService, router: Router) {
     this.service = service;
+    this.router = router;
 
     this.service
       .lista()
@@ -24,6 +27,25 @@ export class ListaComponent implements OnInit {
       }, erro => {
         console.log(erro)
       })
+  }
+
+  public editarMembro(id) {
+    this.router.navigate(['cadastro/' + id]);
+  }
+
+  public excluirMembro(membro) {
+
+    this.service
+      .excluir(membro)
+      .subscribe(res => {
+
+        let novaLista = this.membro.slice(0);
+        let indice = novaLista.indexOf(membro);
+        novaLista.splice(indice, 1);
+        this.membro = novaLista;
+
+      })
+
   }
 
   ngOnInit() {

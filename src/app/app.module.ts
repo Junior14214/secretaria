@@ -1,3 +1,4 @@
+import { DizimistaModule } from './dizimista/dizimista.module';
 import { ListaComponent } from './membro/lista.component';
 import { MembroComponent } from './membro/membro.component';
 import { MembroModule } from './membro/membro.module';
@@ -10,6 +11,8 @@ import {MatToolbarModule, MatGridListModule} from '@angular/material';
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { RelatorioComponent } from './relatorio/relatorio.component';
+import { RelatorioModule } from './relatorio/relatorio.module';
 
 
 @NgModule({
@@ -26,7 +29,9 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatGridListModule
+    MatGridListModule,
+    DizimistaModule,
+    RelatorioModule
 
   ],
   providers: [],

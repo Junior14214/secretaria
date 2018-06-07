@@ -1,0 +1,14 @@
+<mat-tab-group>
+  <mat-tab label="Tab 1">
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="data" name="data" [matDatepicker]="picker" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <button (click)="teste()">teste</button>
+{{data}}
+
+  </mat-tab>
+  <mat-tab label="Tab 2">Content 2</mat-tab>
+</mat-tab-group>

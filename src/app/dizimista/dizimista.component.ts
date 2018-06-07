@@ -1,0 +1,47 @@
+import { Dizimistas } from './../model/dizimista';
+import { DizimistaService } from './dizimista.service';
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-dizimista',
+  templateUrl: './dizimista.component.html',
+  styleUrls: ['./dizimista.component.css']
+})
+export class DizimistaComponent implements OnInit {
+
+  dizimista: Dizimistas = new Dizimistas();
+  service: DizimistaService;
+  lista: Dizimistas[] = [];
+  data: Date = new Date();
+
+  constructor(service: DizimistaService) {
+    this.service = service;
+  }
+
+  public addInput() {
+    let mes = this.data.getMonth() + 1;
+    this.dizimista.data = this.data.getDate() + '/' + mes + '/' + this.data.getFullYear()
+    this.lista.push(this.dizimista);
+    this.dizimista = new Dizimistas();
+  }
+
+  public removeLinha(membro) {
+    let index = this.lista.indexOf(membro);
+    this.lista.splice(index, 1);
+  }
+
+  public salvarMinhaBenga() {
+
+    this.service
+      .salvar(this.lista)
+      .subscribe(res => {
+        this.dizimista = new Dizimistas();
+        this.lista = [];
+        console.log('Salvou')
+      })
+  }
+
+  ngOnInit() {
+  }
+
+}

@@ -91,7 +91,7 @@
           <input matInput [(ngModel)]="membro.congregacao" name="congregacao" placeholder="Congregação">
         </mat-form-field>
 
-<br>
+        <br>
 
         <mat-form-field class="textArea">
           <textarea matInput [(ngModel)]="membro.observacao" name="observacao" placeholder="Observação"></textarea>
@@ -103,5 +103,9 @@
     </form>
 
   </mat-tab>
-  <mat-tab label="Tab 2">Content 2</mat-tab>
+  <mat-tab label="Cadastro de Dizimistas">
+
+    <app-dizimista></app-dizimista>
+
+  </mat-tab>
 </mat-tab-group>

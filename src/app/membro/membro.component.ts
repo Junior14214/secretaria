@@ -1,6 +1,7 @@
+import { Membros } from './../model/membro';
 import { MembroService } from './membro.service';
-import { Membros } from './../../model/membro';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-membro',
@@ -11,9 +12,23 @@ export class MembroComponent implements OnInit {
 
   membro: Membros = new Membros();
   service: MembroService;
+  route: ActivatedRoute;
+  router: Router;
 
-  constructor(service: MembroService) {
+  constructor(service: MembroService, route: ActivatedRoute, router: Router) {
     this.service = service;
+    this.route = route;
+    this.router = router;
+
+    this.route.params.subscribe(params => {
+      let id = params['id'];
+
+      if (id) {
+        this.service
+          .buscarPorId(id)
+          .subscribe(membro => this.membro = membro, erro => console.log(erro));
+      }
+    })
   }
 
   public salvar(event) {
