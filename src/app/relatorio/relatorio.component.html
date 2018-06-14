@@ -1,14 +1,20 @@
 <mat-tab-group>
-  <mat-tab label="Tab 1">
+  <mat-tab label="Relatorio de Dizimistas">
 
     <mat-form-field>
-      <input matInput [(ngModel)]="data" name="data" [matDatepicker]="picker" placeholder="Choose a date">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+      <input matInput [(ngModel)]="data1" name="data1" [matDatepicker]="picker1" placeholder="Selecione uma Data">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
-    <button (click)="teste()">teste</button>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="data2" name="data2" [matDatepicker]="picker2" placeholder="Selecione uma Data">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <button (click)="submit(data1 ,data2)">teste</button>
 {{data}}
 
   </mat-tab>
-  <mat-tab label="Tab 2">Content 2</mat-tab>
+  <mat-tab label="Relatório Finançeiro">Content 2</mat-tab>
 </mat-tab-group>

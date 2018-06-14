@@ -19,10 +19,20 @@ export class DizimistaComponent implements OnInit {
   }
 
   public addInput() {
+    let dia;
+
+    if(this.data.getDate() >= 10){
+      dia = this.data.getDate();
+    }else{
+      dia = '0' + this.data.getDate();
+    }
+    
     let mes = this.data.getMonth() + 1;
     this.dizimista.data = this.data.getDate() + '/' + mes + '/' + this.data.getFullYear()
     this.lista.push(this.dizimista);
     this.dizimista = new Dizimistas();
+
+    console.log(dia);
   }
 
   public removeLinha(membro) {
