@@ -1,6 +1,9 @@
+import { Dizimistas } from './../model/dizimista';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDatepicker } from '@angular/material';
 import { RelatorioService } from './relatorio.service';
+import * as jsPDF from 'jspdf'
+import * as html2canvas from "html2canvas"
 
 @Component({
   selector: 'app-relatorio',
@@ -13,6 +16,8 @@ export class RelatorioComponent implements OnInit {
   dataFormatada1: string;
   dataFormatada2: string;
   service: RelatorioService
+  listaDeDizimistas: Dizimistas[] = [];
+  total: number = 0;
   /*   dia = this.data.getDate();
     mes = this.data.getMonth()+1;
     ano = this.data.getFullYear(); */
@@ -63,14 +68,45 @@ export class RelatorioComponent implements OnInit {
   }
 
   public submit(data1, data2) {
+
     this.formatarData(data1, 1);
     this.formatarData(data2, 2);
 
     this.service
       .relatorio(this.dataFormatada1, this.dataFormatada2)
       .subscribe(res => {
-        console.log(res);
+
+        this.listaDeDizimistas = res;
+
+        if (this.listaDeDizimistas.length < 32) {
+          let obj = { id: 0, nome: '', valor: 0, data: '' }
+          for (let i = this.listaDeDizimistas.length; i < 32; i++) {
+            this.listaDeDizimistas.push(obj);
+          }
+        }
+
+        let g = 0;
+
+        this.listaDeDizimistas.forEach(function (item) {
+          g += item.valor
+        });
+
+        this.total = g;
       });
+  };
+
+  public gerarPDF() {
+    html2canvas(document.getElementById('capture')).then(function (canvas) {
+      var img = canvas.toDataURL("image/png");
+      var doc = new jsPDF('p', 'mm');
+      doc.addImage(img, 'PNG', 10, 5, 190, 290);
+      doc.save('Relatório_de_Dizimistas_Mensal.pdf');
+    });
+  }
+
+  public novoRelatorio() {
+    this.listaDeDizimistas = [];
+    this.total = 0;
   }
 
   ngOnInit() {
