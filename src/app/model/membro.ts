@@ -25,4 +25,5 @@ export class Membros {
     congregacao: string;
     historico: string;
     observacao: string;
+    foto: string;
  }

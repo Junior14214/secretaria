@@ -14,6 +14,7 @@ export class MembroComponent implements OnInit {
   service: MembroService;
   route: ActivatedRoute;
   router: Router;
+  base64textString: string = "";
 
   constructor(service: MembroService, route: ActivatedRoute, router: Router) {
     this.service = service;
@@ -39,11 +40,37 @@ export class MembroComponent implements OnInit {
       .salvar(this.membro)
       .subscribe(res => {
         this.membro = new Membros();
+        this.base64textString = '';
         console.log('salvou mizeravi');
       }, erro => {
         console.log(erro);
       })
   }
+
+  public upload() {
+
+  }
+
+  handleFileSelect(evt) {
+    var files = evt.target.files;
+    var file = files[0];
+
+    if (files && file) {
+      var reader = new FileReader();
+
+      reader.onload = this._handleReaderLoaded.bind(this);
+
+      reader.readAsBinaryString(file);
+    }
+  }
+
+  _handleReaderLoaded(readerEvt) {
+    var binaryString = readerEvt.target.result;
+    this.base64textString = "data:image/png;base64," + btoa(binaryString);
+    this.membro.foto = this.base64textString;
+
+  }
+
 
   ngOnInit() {
   }

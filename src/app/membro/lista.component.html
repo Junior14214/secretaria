@@ -13,6 +13,11 @@
           <mat-cell *matCellDef="let item, let i = index"> {{i+1}} </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="Foto">
+            <mat-header-cell *matHeaderCellDef> Foto </mat-header-cell>
+            <mat-cell *matCellDef="let item, let i = index"> <img src="{{item.foto}}" width="50" height="50"> </mat-cell>
+          </ng-container>
+
         <ng-container matColumnDef="Rol">
           <mat-header-cell *matHeaderCellDef> N° de Rol </mat-header-cell>
           <mat-cell *matCellDef="let item"> {{item.id}} </mat-cell>

@@ -13,7 +13,7 @@ export class ListaComponent implements OnInit {
 
   membro: Membros[] = [];
   service: MembroService;
-  displayedColumns = ['position', 'Rol', 'Nome', 'Cargo', 'Congregação', 'Telefone', 'Acao'];
+  displayedColumns = ['position', 'Foto', 'Rol', 'Nome', 'Cargo', 'Congregação', 'Telefone', 'Acao'];
   router: Router;
 
   constructor(service: MembroService, router: Router) {
