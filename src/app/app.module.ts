@@ -24,12 +24,12 @@ import { AngularFireAuthModule } from 'angularfire2/auth'
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyBkVH-_4pVdyOqtLKh6KuD-38d_qwLvob4",
-  authDomain: "secretariaapp-aa38a.firebaseapp.com",
-  databaseURL: "https://secretariaapp-aa38a.firebaseio.com",
-  projectId: "secretariaapp-aa38a",
-  storageBucket: "secretariaapp-aa38a.appspot.com",
-  messagingSenderId: "501878039484"
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: ""
 }
 
 @NgModule({
