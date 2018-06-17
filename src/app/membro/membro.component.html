@@ -18,6 +18,7 @@
           <tr>
             <td style="padding-right: 10px; width: 180px">
               <img src="{{base64textString}}" width="180" height="250" *ngIf="base64textString" style="padding-bottom: 10px">
+              <img src="{{membro.foto}}" *ngIf="membro.foto && !base64textString" width="180" height="250" style="padding-bottom: 10px">
               <br>
               <label for='selecao-arquivo'>Selecionar Foto</label>
               <input id='selecao-arquivo' type='file' (change)="handleFileSelect($event)">
@@ -130,6 +131,12 @@
   <mat-tab label="Cadastro de Dizimistas">
 
     <app-dizimista></app-dizimista>
+
+  </mat-tab>
+
+  <mat-tab label="Cadastro de Usuários">
+
+    <app-usuario></app-usuario>
 
   </mat-tab>
 </mat-tab-group>

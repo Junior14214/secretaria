@@ -1,0 +1,58 @@
+<form class="example-form formulario">
+
+  <table class="tabela">
+    <tr>
+      <td rowspan="4" style="width: 200px">
+        <img src="{{base64textString}}" width="180" height="250" *ngIf="base64textString" style="padding-bottom: 10px">
+        <br>
+        <label for='selecao-arquivo'>Selecionar Foto</label>
+        <input id='selecao-arquivo' type='file' (change)="handleFileSelect($event)">
+      </td>
+
+      <td>
+        <mat-form-field class="example-full-width">
+          <input matInput [(ngModel)]="usuario.nome" name="nome" placeholder="Nome">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput [(ngModel)]="usuario.sobrenome" name="sobrenome" placeholder="Sobrenome">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput [(ngModel)]="usuario.email" name="email" placeholder="Email">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="senha" name="senha" placeholder="Senha">
+          </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput [(ngModel)]="usuario.congregacao" name="congregacao" placeholder="Congregação">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput [(ngModel)]="usuario.endereco" name="endereco" placeholder="Endereço">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select [(ngModel)]="usuario.permissao" name="permissao" placeholder="Permissão">
+            <mat-option value="ADM">
+              ADM
+            </mat-option>
+            <mat-option value="USER">
+              USER
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored botao" (click)="cadastroEmail()">
+          Salvar
+        </button>
+      </td>
+    </tr>
+  </table>
+
+</form>

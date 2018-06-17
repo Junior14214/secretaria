@@ -16,6 +16,7 @@ export class LoginComponent {
   user: Observable<firebase.User>;
   login: string;
   senha: string;
+  validador: boolean = true;
 
   constructor(public afAuth: AngularFireAuth, private router: Router) {
     this.user = this.afAuth.authState;

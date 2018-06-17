@@ -1,3 +1,4 @@
+import { UsuarioModule } from './usuario/usuario.module';
 import { AuthGuard } from './auth.guard';
 import { routing } from './app-routing.module';
 import { DizimistaModule } from './dizimista/dizimista.module';
@@ -20,7 +21,7 @@ import { LoginModule } from './login/login.module';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth'
-import { AngularFireDatabaseModule } from 'angularfire2/database'
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBkVH-_4pVdyOqtLKh6KuD-38d_qwLvob4",
@@ -54,6 +55,7 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    UsuarioModule
 
   ],
   providers: [AuthGuard],
