@@ -2,25 +2,25 @@
   <mat-tab label="Lista de Membros">
 
     <div class="example-container mat-elevation-z8">
-      <mat-table #table [dataSource]="membro">
 
-        <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
+      <div class="example-header">
+        <mat-form-field class="input">
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+        </mat-form-field>
+      </div>
+
+      <mat-table #table [dataSource]="dataSource">
 
         <!-- Position Column -->
-        <ng-container matColumnDef="position">
-          <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
-          <mat-cell *matCellDef="let item, let i = index"> {{i+1}} </mat-cell>
-        </ng-container>
-
         <ng-container matColumnDef="Foto">
-            <mat-header-cell *matHeaderCellDef> Foto </mat-header-cell>
-            <mat-cell *matCellDef="let item, let i = index"> <img src="{{item.foto}}" width="50" height="50"> </mat-cell>
-          </ng-container>
+          <mat-header-cell *matHeaderCellDef> Foto </mat-header-cell>
+          <mat-cell *matCellDef="let item, let i = index">
+            <img src="{{item.foto}}" width="50" height="50"> </mat-cell>
+        </ng-container>
 
         <ng-container matColumnDef="Rol">
           <mat-header-cell *matHeaderCellDef> N° de Rol </mat-header-cell>
-          <mat-cell *matCellDef="let item"> {{item.id}} </mat-cell>
+          <mat-cell *matCellDef="let item"> {{item.rol}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="Nome">
@@ -51,7 +51,7 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item (click)="editarMembro(item.id)">
+              <button mat-menu-item (click)="editarMembro(item.rol)">
                 <mat-icon>create</mat-icon>
                 <span>Editar</span>
               </button>
@@ -71,6 +71,9 @@
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
+
+      <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 50, 100]" [showFirstLastButtons]="true">
+      </mat-paginator>
     </div>
 
   </mat-tab>

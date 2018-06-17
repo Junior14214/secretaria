@@ -1,3 +1,4 @@
+import { RequerimentosModule } from './requerimentos/requerimentos.module';
 import { UsuarioModule } from './usuario/usuario.module';
 import { AuthGuard } from './auth.guard';
 import { routing } from './app-routing.module';
@@ -22,14 +23,15 @@ import { LoginModule } from './login/login.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth'
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { RequerimentosComponent } from './requerimentos/requerimentos.component';
 
 export const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  databaseURL: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: ""
+  apiKey: "AIzaSyBkVH-_4pVdyOqtLKh6KuD-38d_qwLvob4",
+  authDomain: "secretariaapp-aa38a.firebaseapp.com",
+  databaseURL: "https://secretariaapp-aa38a.firebaseio.com",
+  projectId: "secretariaapp-aa38a",
+  storageBucket: "secretariaapp-aa38a.appspot.com",
+  messagingSenderId: "501878039484"
 }
 
 @NgModule({
@@ -55,7 +57,8 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    UsuarioModule
+    UsuarioModule,
+    RequerimentosModule
 
   ],
   providers: [AuthGuard],

@@ -48,9 +48,9 @@ export class MembroService {
       .map(res => res.json());
   }
 
-  public excluir(membro: Membros) {
+  public excluir(membro) {
 
     return this.http
-      .delete(this.url + '/' + membro.id);
+      .delete(this.url + '/' + membro.rol);
   }
 }

@@ -13,7 +13,7 @@ export class Membros {
     pais: string;
     naturalidade: string;
     estado_civil: string;
-    enddereco: string;
+    endereco: string;
     bairro: string;
     cidade: string;
     cep: string;

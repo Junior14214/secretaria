@@ -1,3 +1,4 @@
+import { RequerimentosComponent } from './requerimentos/requerimentos.component';
 import { RelatorioComponent } from './relatorio/relatorio.component';
 import { MembroComponent } from './membro/membro.component';
 import { ListaComponent } from './membro/lista.component';
@@ -16,6 +17,7 @@ export const APP_ROUTES: Routes = [
   { path: 'cadastro', component: MembroComponent, canActivate:[AuthGuard] },
   { path: 'cadastro/:id', component: MembroComponent, canActivate:[AuthGuard] },
   { path: 'relatorio', component: RelatorioComponent, canActivate:[AuthGuard] },
+  { path: 'requerimentos', component: RequerimentosComponent, canActivate:[AuthGuard] },
   { path: '**', redirectTo: '' },
 
 

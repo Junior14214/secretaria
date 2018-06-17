@@ -9,4 +9,12 @@
     overflow: auto;
     max-height: 500px;
   }
+
+  .example-header{
+    padding: 20px
+  }
+
+  .input{
+    width: 300px
+  }
   
