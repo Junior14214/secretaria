@@ -26,7 +26,6 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { RequerimentosComponent } from './requerimentos/requerimentos.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

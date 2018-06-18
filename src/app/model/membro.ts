@@ -25,5 +25,7 @@ export class Membros {
     congregacao: string;
     historico: string;
     observacao: string;
+    conjuje: string;
+    nascimento_conjuje: string;
     foto: string;
  }
