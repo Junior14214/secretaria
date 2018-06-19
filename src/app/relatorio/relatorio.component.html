@@ -49,14 +49,14 @@
       <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp tabela">
         <thead>
           <tr>
-              <th style="padding-right: 130px">#</th>
+            <th style="padding-right: 130px">#</th>
             <th class="mdl-data-table__cell--non-numeric">NOME DOS DIZIMISTAS</th>
             <th>R$</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of listaDeDizimistas, let i = index">
-              <td style="padding-right: 130px">{{i+1}}</td>
+            <td style="padding-right: 130px">{{i+1}}</td>
             <td class="mdl-data-table__cell--non-numeric">{{item.nome}}</td>
             <td>{{item.valor | currency:'BRL'}}</td>
           </tr>
@@ -72,8 +72,7 @@
       </table>
       <div style="padding-top: 10px">
         <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored myButton"
-        (click)="gerarPDF()"
-        style="margin-left: 10px">
+          (click)="gerarPDF()" style="margin-left: 10px">
           Gerar PDF
         </button>
 
@@ -85,5 +84,7 @@
     </div>
 
   </mat-tab>
-  <mat-tab label="Relatório Finançeiro">Content 2</mat-tab>
+  <mat-tab label="Relatório Finançeiro">
+    <app-demonstrativo></app-demonstrativo>
+  </mat-tab>
 </mat-tab-group>

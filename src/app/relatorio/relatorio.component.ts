@@ -34,23 +34,23 @@ export class RelatorioComponent implements OnInit {
     let ano = dataString.slice(11, 15)
 
     if (mes == 'Jan') {
-      mesFormatado = '1';
+      mesFormatado = '01';
     } if (mes == 'Feb') {
-      mesFormatado = '2';
+      mesFormatado = '02';
     } if (mes == 'Mar') {
-      mesFormatado = '3';
+      mesFormatado = '03';
     } if (mes == 'Apr') {
-      mesFormatado = '4';
+      mesFormatado = '04';
     } if (mes == 'May') {
-      mesFormatado = '5';
+      mesFormatado = '05';
     } if (mes == 'Jun') {
-      mesFormatado = '6';
+      mesFormatado = '06';
     } if (mes == 'Jul') {
-      mesFormatado = '7';
+      mesFormatado = '07';
     } if (mes == 'Aug') {
-      mesFormatado = '8';
+      mesFormatado = '08';
     } if (mes == 'Sep') {
-      mesFormatado = '9';
+      mesFormatado = '09';
     } if (mes == 'Oct') {
       mesFormatado = '10';
     } if (mes == 'Nov') {
@@ -73,13 +73,13 @@ export class RelatorioComponent implements OnInit {
     this.formatarData(data2, 2);
 
     this.service
-      .relatorio(this.dataFormatada1, this.dataFormatada2)
+      .relatorio(1, this.dataFormatada1, this.dataFormatada2)
       .subscribe(res => {
 
         this.listaDeDizimistas = res;
 
         if (this.listaDeDizimistas.length < 32) {
-          let obj = { id: 0, nome: '', valor: 0, data: '' }
+          let obj = { id: 0, nome: '', valor: 0, data: '', tipo: 0 }
           for (let i = this.listaDeDizimistas.length; i < 32; i++) {
             this.listaDeDizimistas.push(obj);
           }

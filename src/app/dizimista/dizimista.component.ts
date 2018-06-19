@@ -28,7 +28,7 @@ export class DizimistaComponent implements OnInit {
     }
     
     let mes = this.data.getMonth() + 1;
-    this.dizimista.data = this.data.getDate() + '/' + mes + '/' + this.data.getFullYear()
+    this.dizimista.data = (mes < 10)? this.data.getDate() + '/' + '0'+mes + '/' + this.data.getFullYear(): this.data.getDate() + '/' + mes + '/' + this.data.getFullYear()
     this.lista.push(this.dizimista);
     this.dizimista = new Dizimistas();
 

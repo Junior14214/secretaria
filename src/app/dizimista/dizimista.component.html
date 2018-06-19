@@ -1,7 +1,24 @@
 <form class="formulario">
-  <div class="example-container inputs">
+  <div class="inputs">
     <mat-form-field>
-      <input matInput [(ngModel)]="dizimista.nome" name="nome" placeholder="Nome">
+      <mat-select [(ngModel)]="dizimista.tipo" name="tipo" placeholder="Tipo de entrada">
+        <mat-option value="1">
+          Dizimo
+        </mat-option>
+        <mat-option value="2">
+          Oferta
+        </mat-option>
+        <mat-option value="3">
+          Oferta Especial
+        </mat-option>
+        <mat-option value="4">
+          Outros
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="dizimista.nome" name="nome" placeholder="Nome/Descrição">
     </mat-form-field>
 
     <mat-form-field>
@@ -10,6 +27,8 @@
     <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored myButton" (click)="addInput(dizimista)">
       <i class="material-icons">add</i>
     </button>
+  </div>
+  <div class="example-container lista">
 
     <!-- <mat-form-field>
       <input matInput [(ngModel)]="membro.mae" name="mae" placeholder="Mãe">

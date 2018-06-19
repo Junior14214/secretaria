@@ -3,12 +3,27 @@ import { DizimistaService } from './dizimista.service';
 import { DizimistaComponent } from './dizimista.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatInputModule, MatIconModule } from '@angular/material';
+import {
+  MatInputModule,
+  MatIconModule,
+  MatSelectModule
+} from '@angular/material';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, MatInputModule, MatIconModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatInputModule,
+    MatIconModule,
+    MatSelectModule
+  ],
   declarations: [DizimistaComponent],
-  exports: [DizimistaComponent, MatInputModule, MatIconModule],
+  exports: [
+    DizimistaComponent,
+    MatInputModule,
+    MatIconModule,
+    MatSelectModule
+  ],
   providers: [DizimistaService]
 })
 export class DizimistaModule { }

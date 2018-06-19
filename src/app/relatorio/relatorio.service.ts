@@ -8,15 +8,22 @@ export class RelatorioService {
 
   private http: Http;
   private headers: Headers;
-  private url: string = 'http://localhost:8080/secretaria/dizimista';
+  private urlRelatorio: string = 'http://localhost:8080/secretaria/dizimista';
+  private urlRelatorioGeral: string = 'http://localhost:8080/secretaria/dizimista/total';
 
   constructor(http: Http) {
     this.http = http;
   }
 
-  public relatorio(data1, data2): Observable<Dizimistas[]> {
+  public relatorio(tipo ,data1, data2): Observable<Dizimistas[]> {
     return this.http
-      .get(this.url + '/' + data1 + '/' + data2)
+      .get(this.urlRelatorio + '/' + tipo + '/' + data1 + '/' + data2)
+      .map(res => res.json())
+  }
+
+  public relatorioGeral(tipo ,data1, data2): Observable<number> {
+    return this.http
+      .get(this.urlRelatorioGeral + '/' + tipo + '/' + data1 + '/' + data2)
       .map(res => res.json())
   }
 
