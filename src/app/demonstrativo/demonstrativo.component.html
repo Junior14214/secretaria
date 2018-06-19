@@ -22,7 +22,7 @@
   <br> totalOfertas: {{totalOfertas| currency: 'BRL'}}
   <br> totalOfertasEspeciais: {{totalOfertasEspeciais| currency: 'BRL'}}
   <br> totalOutros: {{totalOutros| currency: 'BRL'}}
-  <br> totalSaidas:{{totalSaidas| currency: 'BRL'}}
+  <br> totalSaidas:{{totalSaidas - totalDizimos * 0.17 | currency: 'BRL'}}
   <br> saldoMes:{{totalDizimos + totalOfertas + totalOfertasEspeciais + totalOutros + totalSaidas | currency: 'BRL'}}
   <br> Repasse para a sede: {{totalDizimos * 0.17 | currency: 'BRL'}}
 
@@ -118,6 +118,28 @@
             <b>R$</b>
           </th>
         </tr>
+        <tr>
+          <td>
+            1
+          </td>
+          <td>
+            <b>REPASSE PARA A SEDE</b>
+          </td>
+          <td>
+            <b>-{{totalDizimos * 0.17 | currency: 'BRL'}}</b>
+          </td>
+        </tr>
+        <tr *ngFor="let item of saida, let i = index">
+          <td>
+            {{i+2}}
+          </td>
+          <td>
+            {{item.nome}}
+          </td>
+          <td>
+            {{item.valor | currency: 'BRL'}}
+          </td>
+        </tr>
       </thead>
       <tbody>
         <tr>
@@ -125,7 +147,7 @@
             <b>TOTAL DAS SAÍDAS/DESPESAS</b>
           </td>
           <td>
-            {{totalSaidas| currency: 'BRL'}}
+            {{totalSaidas - totalDizimos * 0.17 | currency: 'BRL'}}
           </td>
         </tr>
       </tbody>
@@ -171,7 +193,7 @@
             TOTAL DAS SAÍDAS
           </td>
           <td>
-            {{totalSaidas| currency: 'BRL'}}
+            {{totalSaidas - totalDizimos * 0.17 | currency: 'BRL'}}
           </td>
         </tr>
         <tr>
@@ -182,7 +204,7 @@
             <b>SALDO DO MÊS</b>
           </td>
           <td>
-            {{totalDizimos + totalOfertas + totalOfertasEspeciais + totalOutros + totalSaidas | currency: 'BRL'}}
+            {{((totalDizimos + totalOfertas + totalOfertasEspeciais + totalOutros + totalSaidas) - totalDizimos * 0.17) | currency: 'BRL'}}
           </td>
         </tr>
         <tr>

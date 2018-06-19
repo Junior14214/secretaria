@@ -1,3 +1,4 @@
+import { Dizimistas } from './../model/dizimista';
 import { RelatorioService } from './../relatorio/relatorio.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -18,6 +19,7 @@ export class DemonstrativoComponent implements OnInit {
   private totalOfertasEspeciais: number;
   private totalOutros: number;
   private totalSaidas: number;
+  private saida: Dizimistas[] = [];
 
   constructor(service: RelatorioService) {
     this.service = service;
@@ -113,7 +115,18 @@ export class DemonstrativoComponent implements OnInit {
       .subscribe(res => {
         this.totalSaidas = res;
       })
+    this.listaDeSaidas(5, data1, data2);
 
+  }
+
+  public listaDeSaidas(tipo, data1, data2) {
+    console.log(tipo, data1, data2);
+
+    this.service.relatorio(tipo, data1, data2)
+      .subscribe(res => {
+        console.log(res);
+        this.saida = res;
+      })
   }
 
   ngOnInit() {
