@@ -1,6 +1,9 @@
 import { Dizimistas } from './../model/dizimista';
 import { RelatorioService } from './../relatorio/relatorio.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import * as jsPDF from 'jspdf';
+import * as html2canvas from "html2canvas";
+import * as html2pdf from 'html2pdf.js';
 
 @Component({
   selector: 'app-demonstrativo',
@@ -20,9 +23,11 @@ export class DemonstrativoComponent implements OnInit {
   private totalOutros: number;
   private totalSaidas: number;
   private saida: Dizimistas[] = [];
+  @Input() testeNaTela: string;
 
   constructor(service: RelatorioService) {
     this.service = service;
+
   }
 
   public formatarData(data, number) {
@@ -129,7 +134,31 @@ export class DemonstrativoComponent implements OnInit {
       })
   }
 
+  public novoRelatorio() {
+    this.saida = [];
+    this.totalDizimos = 0;
+    this.totalOfertas = 0;
+    this.totalOfertasEspeciais = 0;
+    this.totalOutros = 0;
+    this.totalSaidas = 0;
+  }
+
+  public gerarPDF() {
+    var element = document.getElementById('capture');
+    var opt = {
+      margin: 0.2,
+      filename: 'Demonstrativo_finançeiro_mensal.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { width: 1000},
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    // New Promise-based usage:
+    html2pdf().from(element).set(opt).save();
+  }
+
   ngOnInit() {
+    console.log(this.testeNaTela);
   }
 
 }

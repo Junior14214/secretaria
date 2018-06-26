@@ -2,8 +2,9 @@ import { Dizimistas } from './../model/dizimista';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDatepicker } from '@angular/material';
 import { RelatorioService } from './relatorio.service';
-import * as jsPDF from 'jspdf'
-import * as html2canvas from "html2canvas"
+import * as jsPDF from 'jspdf';
+import * as html2canvas from "html2canvas";
+import * as html2pdf from 'html2pdf.js';
 
 @Component({
   selector: 'app-relatorio',
@@ -18,6 +19,7 @@ export class RelatorioComponent implements OnInit {
   service: RelatorioService
   listaDeDizimistas: Dizimistas[] = [];
   total: number = 0;
+  teste: string = "teste";
   /*   dia = this.data.getDate();
     mes = this.data.getMonth()+1;
     ano = this.data.getFullYear(); */
@@ -96,12 +98,17 @@ export class RelatorioComponent implements OnInit {
   };
 
   public gerarPDF() {
-    html2canvas(document.getElementById('capture')).then(function (canvas) {
-      var img = canvas.toDataURL("image/png");
-      var doc = new jsPDF('p', 'mm');
-      doc.addImage(img, 'PNG', 10, 5, 190, 290);
-      doc.save('Relatório_de_Dizimistas_Mensal.pdf');
-    });
+    var element = document.getElementById('capture');
+    var opt = {
+      margin: 0.2,
+      filename: 'Relatorio_Mensal_Dizimistas.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { width: 1000},
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    // New Promise-based usage:
+    html2pdf().from(element).set(opt).save();
   }
 
   public novoRelatorio() {

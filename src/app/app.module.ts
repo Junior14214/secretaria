@@ -1,3 +1,4 @@
+import { Globals } from './globals';
 import { RequerimentosModule } from './requerimentos/requerimentos.module';
 import { UsuarioModule } from './usuario/usuario.module';
 import { AuthGuard } from './auth.guard';
@@ -24,6 +25,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth'
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { RequerimentosComponent } from './requerimentos/requerimentos.component';
+import { VisualizarMembroComponent } from './visualizar-membro/visualizar-membro.component';
 
 
 
@@ -32,6 +34,7 @@ import { RequerimentosComponent } from './requerimentos/requerimentos.component'
     AppComponent,
     MembroComponent,
     HomeComponent,
+    VisualizarMembroComponent,
 
   ],
   imports: [
@@ -54,7 +57,7 @@ import { RequerimentosComponent } from './requerimentos/requerimentos.component'
     RequerimentosModule
 
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

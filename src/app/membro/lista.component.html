@@ -55,13 +55,13 @@
                 <mat-icon>create</mat-icon>
                 <span>Editar</span>
               </button>
-              <button mat-menu-item (click)="excluirMembro(item)">
+              <button mat-menu-item (click)="excluirMembro(item)" *ngIf="globals.informacoesUsuarioLogado.permissao == 'ADM'">
                 <mat-icon>delete</mat-icon>
                 <span>Excluir</span>
               </button>
               <button mat-menu-item>
-                <mat-icon>create</mat-icon>
-                <span>Disable alerts</span>
+                <mat-icon>portrait</mat-icon>
+                <span>Visualizar</span>
               </button>
             </mat-menu>
 

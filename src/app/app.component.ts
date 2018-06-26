@@ -1,11 +1,12 @@
 import { UsuarioService } from './usuario/usuario.service';
 import { Router } from '@angular/router';
-import { Component, AfterContentChecked } from '@angular/core';
+import { Component, AfterContentChecked, Input } from '@angular/core';
 import { Observable } from 'rxjs/observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Usuario } from './model/usuario';
 import { MembroComponent } from './membro/membro.component';
+import { Globals } from './globals';
 
 @Component({
   selector: 'app-root',
@@ -45,20 +46,6 @@ export class AppComponent implements AfterContentChecked {
         this.count++;
       }
     }
-
-    /* if(uid.length && count == 0){
-      this.service.buscarInformacoesUsuarioLogado(uid)
-      .subscribe(res => {
-        this.usuario = res;
-        console.log(res);
-      });
-      count++;
-    } */
-
-    /* this.service.buscarInformacoesUsuarioLogado(firebase.auth().currentUser.uid)
-      .subscribe(res => {
-        this.usuario = res;
-      }); */
   }
 
 }

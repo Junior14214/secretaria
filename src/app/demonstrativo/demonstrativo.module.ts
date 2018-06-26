@@ -2,7 +2,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DemonstrativoComponent } from './demonstrativo.component';
-import { MatDatepickerModule, MatInputModule } from '@angular/material';
+import { MatDatepickerModule, MatInputModule, MatDialogModule } from '@angular/material';
 
 
 
@@ -11,14 +11,16 @@ import { MatDatepickerModule, MatInputModule } from '@angular/material';
     CommonModule,
     MatDatepickerModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
   declarations: [DemonstrativoComponent],
   exports: [
     DemonstrativoComponent,
     MatDatepickerModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
 })
 export class DemonstrativoModule { }

@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase/app';
 import * as jsPDF from 'jspdf'
 import * as html2canvas from "html2canvas"
+import * as html2pdf from "html2pdf.js"
 
 @Component({
   selector: 'app-requerimentos',
@@ -33,12 +34,17 @@ export class RequerimentosComponent implements OnInit {
   }
 
   public gerarPDF() {
-    html2canvas(document.getElementById('capture')).then(function (canvas) {
-      var img = canvas.toDataURL("image/png");
-      var doc = new jsPDF('p', 'mm');
-      doc.addImage(img, 'PNG', 10, 5, 190, 240);
-      doc.save('Relatório_de_Dizimistas_Mensal.pdf');
-    });
+    var element = document.getElementById('element-to-print');
+    var opt = {
+      margin: 0.2,
+      filename: 'Ficha_de_requerimento_' + this.tipoDeRequerimento + '.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { width: 1000},
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    // New Promise-based usage:
+    html2pdf().from(element).set(opt).save();
   }
 
   public novoRequerimento() {
@@ -46,16 +52,16 @@ export class RequerimentosComponent implements OnInit {
     this.conjuje = '';
     this.cargo_consagracao = '';
     this.tipoDeRequerimento = '';
-}
+  }
 
   public pesquisarMembro(id) {
-  this.service.buscarPorId(id)
-    .subscribe(res => {
-      this.membro = res;
-    })
-}
+    this.service.buscarPorId(id)
+      .subscribe(res => {
+        this.membro = res;
+      })
+  }
 
-ngOnInit() {
-}
+  ngOnInit() {
+  }
 
 }
