@@ -14,6 +14,7 @@
                   <input id='selecao-arquivo' type='file'  (change)="handleFileSelect($event)">
               </mat-grid-tile>
             </mat-grid-list> -->
+
         <table>
           <tr>
             <td style="padding-right: 10px; width: 180px">
@@ -109,7 +110,11 @@
               </mat-form-field>
 
               <mat-form-field>
-                <input matInput [(ngModel)]="membro.congregacao" name="congregacao" placeholder="Congregação">
+                <mat-select [(ngModel)]="membro.congregacao" name="congregacao" placeholder="Congregação">
+                  <mat-option *ngFor="let item of listaCongregacoes" value="{{item.congregacao}}">
+                    {{item.congregacao}}
+                  </mat-option>
+                </mat-select>
               </mat-form-field>
 
               <br>
@@ -128,7 +133,7 @@
     </form>
 
   </mat-tab>
-  <mat-tab label="Cadastro de Dizimistas">
+  <mat-tab label="Cadastro de Entradas">
 
     <app-dizimista></app-dizimista>
 

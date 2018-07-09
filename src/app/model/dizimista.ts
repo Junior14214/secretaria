@@ -6,5 +6,6 @@ export class Dizimistas {
     valor: number;
     data;
     tipo: number;
+    congregacao: string;
 
 }

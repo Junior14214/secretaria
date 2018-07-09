@@ -1,3 +1,4 @@
+import { Globals } from './../globals';
 import { Dizimistas } from './../model/dizimista';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDatepicker } from '@angular/material';
@@ -16,16 +17,20 @@ export class RelatorioComponent implements OnInit {
   data2 = new Date();
   dataFormatada1: string;
   dataFormatada2: string;
+  dataRelatorio1: string;
+  dataRelatorio2: string;
   service: RelatorioService
   listaDeDizimistas: Dizimistas[] = [];
   total: number = 0;
   teste: string = "teste";
+  globals: Globals;
   /*   dia = this.data.getDate();
     mes = this.data.getMonth()+1;
     ano = this.data.getFullYear(); */
 
-  constructor(service: RelatorioService) {
+  constructor(service: RelatorioService, globals: Globals) {
     this.service = service;
+    this.globals = globals;
   }
 
   public formatarData(data, number) {
@@ -63,9 +68,10 @@ export class RelatorioComponent implements OnInit {
 
 
     if (number == 1) {
-      this.dataFormatada1 = dia + mesFormatado + ano;
+      this.dataFormatada1 = ano + mesFormatado + dia;
+      this.dataRelatorio1 = dia + '/' + mesFormatado + '/' + ano;
     } else {
-      this.dataFormatada2 = dia + mesFormatado + ano;
+      this.dataFormatada2 = ano + mesFormatado + dia;
     }
   }
 
@@ -75,13 +81,13 @@ export class RelatorioComponent implements OnInit {
     this.formatarData(data2, 2);
 
     this.service
-      .relatorio(1, this.dataFormatada1, this.dataFormatada2)
+      .relatorio(1, this.globals.informacoesUsuarioLogado.congregacao, this.dataFormatada1, this.dataFormatada2)
       .subscribe(res => {
 
         this.listaDeDizimistas = res;
 
         if (this.listaDeDizimistas.length < 32) {
-          let obj = { id: 0, nome: '', valor: 0, data: '', tipo: 0 }
+          let obj = { id: 0, nome: '', valor: 0, data: '', congregacao: '', tipo: 0 }
           for (let i = this.listaDeDizimistas.length; i < 32; i++) {
             this.listaDeDizimistas.push(obj);
           }
@@ -103,7 +109,7 @@ export class RelatorioComponent implements OnInit {
       margin: 0.2,
       filename: 'Relatorio_Mensal_Dizimistas.pdf',
       image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { width: 1000},
+      html2canvas: { width: 1000 },
       jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
 

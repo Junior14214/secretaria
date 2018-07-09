@@ -1,3 +1,4 @@
+import { RelatorioGeralModule } from './relatorio-geral/relatorio-geral.module';
 import { Globals } from './globals';
 import { RequerimentosModule } from './requerimentos/requerimentos.module';
 import { UsuarioModule } from './usuario/usuario.module';
@@ -26,8 +27,16 @@ import { AngularFireAuthModule } from 'angularfire2/auth'
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { RequerimentosComponent } from './requerimentos/requerimentos.component';
 import { VisualizarMembroComponent } from './visualizar-membro/visualizar-membro.component';
+import { RelatorioGeralComponent } from './relatorio-geral/relatorio-geral.component';
 
-
+export const firebaseConfig = {
+  apiKey: "AIzaSyBkVH-_4pVdyOqtLKh6KuD-38d_qwLvob4",
+  authDomain: "secretariaapp-aa38a.firebaseapp.com",
+  databaseURL: "https://secretariaapp-aa38a.firebaseio.com",
+  projectId: "secretariaapp-aa38a",
+  storageBucket: "secretariaapp-aa38a.appspot.com",
+  messagingSenderId: "501878039484"
+}
 
 @NgModule({
   declarations: [
@@ -54,7 +63,8 @@ import { VisualizarMembroComponent } from './visualizar-membro/visualizar-membro
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     UsuarioModule,
-    RequerimentosModule
+    RequerimentosModule,
+    RelatorioGeralModule
 
   ],
   providers: [AuthGuard, Globals],

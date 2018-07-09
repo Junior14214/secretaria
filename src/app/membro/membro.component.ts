@@ -1,3 +1,4 @@
+import { Congregacoes } from './../model/congregacoes';
 import { Membros } from './../model/membro';
 import { MembroService } from './membro.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,6 +13,7 @@ import { Globals } from '../globals';
 export class MembroComponent implements OnInit {
 
   membro: Membros = new Membros();
+  listaCongregacoes: Congregacoes[];
   service: MembroService;
   route: ActivatedRoute;
   router: Router;
@@ -31,6 +33,9 @@ export class MembroComponent implements OnInit {
           .subscribe(membro => this.membro = membro, erro => console.log(erro));
       }
     })
+
+    this.service.listarCongregacoes()
+      .subscribe(lista => this.listaCongregacoes = lista, erro => console.log(erro));
   }
 
   public salvar(event) {

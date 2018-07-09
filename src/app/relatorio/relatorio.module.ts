@@ -1,3 +1,4 @@
+import { RelatorioGeralModule } from './../relatorio-geral/relatorio-geral.module';
 import { DemonstrativoModule } from './../demonstrativo/demonstrativo.module';
 import { DizimistaModule } from './../dizimista/dizimista.module';
 import { RelatorioService } from './relatorio.service';
@@ -8,7 +9,7 @@ import { CommonModule } from '@angular/common';
 import { MatDatepickerModule, MatTabsModule, MatInputModule, MAT_DATE_LOCALE } from '@angular/material';
 
 @NgModule({
-  imports: [CommonModule, MatDatepickerModule, MatTabsModule, MatInputModule, FormsModule, DemonstrativoModule],
+  imports: [CommonModule, MatDatepickerModule, MatTabsModule, MatInputModule, FormsModule, DemonstrativoModule, RelatorioGeralModule],
   declarations: [RelatorioComponent],
   exports: [RelatorioComponent, MatDatepickerModule, MatTabsModule, MatInputModule],
   providers: [{provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}, RelatorioService]

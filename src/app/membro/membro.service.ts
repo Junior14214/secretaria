@@ -5,6 +5,7 @@ import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/observable';
 import { Response } from '@angular/http/src/static_response';
 import 'rxjs/add/operator/map';
+import { Congregacoes } from '../model/congregacoes';
 
 @Injectable()
 export class MembroService {
@@ -12,6 +13,8 @@ export class MembroService {
   private http: Http;
   private headers: Headers;
   private url: string = 'http://localhost:8080/secretaria/membro';
+  private urlCongregacao = 'http://localhost:8080/congregacoes/lista';
+  private urlListarCongregacoesPorNome = 'http://localhost:8080/secretaria/membro/listar'
   private router: Router;
 
   constructor(http: Http, router: Router) {
@@ -52,5 +55,17 @@ export class MembroService {
 
     return this.http
       .delete(this.url + '/' + membro.rol);
+  }
+
+  public listarCongregacoes(): Observable<Congregacoes[]> {
+    return this.http
+      .get(this.urlCongregacao)
+      .map(res => res.json());
+  }
+
+  public listarMembrosPorCongregacao(congregacao): Observable<Membros[]> {
+    return this.http
+      .get(this.urlListarCongregacoesPorNome + '/' + congregacao)
+      .map(res => res.json());
   }
 }

@@ -10,21 +10,29 @@ export class RelatorioService {
   private headers: Headers;
   private urlRelatorio: string = 'http://localhost:8080/secretaria/dizimista';
   private urlRelatorioGeral: string = 'http://localhost:8080/secretaria/dizimista/total';
+  private urlRelatorioGeralSede: string = 'http://localhost:8080/secretaria/repasseCongregacoes'
 
   constructor(http: Http) {
     this.http = http;
   }
 
-  public relatorio(tipo ,data1, data2): Observable<Dizimistas[]> {
+  public relatorio(tipo, congregacao, data1, data2): Observable<Dizimistas[]> {
     return this.http
-      .get(this.urlRelatorio + '/' + tipo + '/' + data1 + '/' + data2)
+      .get(this.urlRelatorio + '/' + tipo + '/' + congregacao + '/' + data1 + '/' + data2)
       .map(res => res.json())
   }
 
-  public relatorioGeral(tipo ,data1, data2): Observable<number> {
+  public relatorioGeral(tipo, congregacao, data1, data2): Observable<number> {
     return this.http
-      .get(this.urlRelatorioGeral + '/' + tipo + '/' + data1 + '/' + data2)
+      .get(this.urlRelatorioGeral + '/' + tipo + '/' + congregacao + '/' + data1 + '/' + data2)
       .map(res => res.json())
   }
+
+  public relatorioGeralaSede(tipo, data1, data2): Observable<Response[]> {
+    return this.http
+      .get(this.urlRelatorioGeralSede + '/' + tipo + '/' + data1 + '/' + data2)
+      .map(res => res.json())
+  }
+
 
 }

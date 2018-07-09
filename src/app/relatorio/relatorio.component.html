@@ -73,7 +73,7 @@
     </div>
     <div style="padding-top: 10px" *ngIf="total != 0">
       <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored myButton"
-        (click)="novoRelatorio()"  style="margin-left: 10px">
+        (click)="novoRelatorio()" style="margin-left: 10px">
         Novo Relatório
       </button>
 
@@ -85,6 +85,10 @@
 
   </mat-tab>
   <mat-tab label="Relatório Finançeiro">
-    <app-demonstrativo [testeNaTela]="teste"></app-demonstrativo>
+    <app-demonstrativo></app-demonstrativo>
+  </mat-tab>
+
+  <mat-tab label="Relatório Geral">
+    <app-relatorio-geral></app-relatorio-geral>
   </mat-tab>
 </mat-tab-group>

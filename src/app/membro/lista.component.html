@@ -77,5 +77,95 @@
     </div>
 
   </mat-tab>
-  <mat-tab label="Tab 2">Content 2</mat-tab>
+  <mat-tab label="Lista de Membros">
+
+      <mat-form-field>
+          <mat-select [(ngModel)]="congregacaoSelecionada" name="congregacao" placeholder="Congregação">
+            <mat-option *ngFor="let item of congregacoes" value="{{item.congregacao}}">
+              {{item.congregacao}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      <button (click)="teste(congregacaoSelecionada)"> teste </button>
+
+    {{congregacaoSelecionada}}
+
+    <div class="example-container mat-elevation-z8">
+
+      <div class="example-header">
+        <mat-form-field class="input">
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+        </mat-form-field>
+      </div>
+
+      <mat-table #table [dataSource]="dataSource">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="Foto">
+          <mat-header-cell *matHeaderCellDef> Foto </mat-header-cell>
+          <mat-cell *matCellDef="let item, let i = index">
+            <img src="{{item.foto}}" width="50" height="50"> </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Rol">
+          <mat-header-cell *matHeaderCellDef> N° de Rol </mat-header-cell>
+          <mat-cell *matCellDef="let item"> {{item.id}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Nome">
+          <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+          <mat-cell *matCellDef="let item"> {{item.nome}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Cargo">
+          <mat-header-cell *matHeaderCellDef> Cargo </mat-header-cell>
+          <mat-cell *matCellDef="let item"> {{item.cargo}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Congregação">
+          <mat-header-cell *matHeaderCellDef> Congregação </mat-header-cell>
+          <mat-cell *matCellDef="let item"> {{item.congregacao}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Telefone">
+          <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
+          <mat-cell *matCellDef="let item"> {{item.telefone}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Acao">
+          <mat-header-cell *matHeaderCellDef> Ação </mat-header-cell>
+          <mat-cell *matCellDef="let item">
+
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="editarMembro(item.rol)">
+                <mat-icon>create</mat-icon>
+                <span>Editar</span>
+              </button>
+              <button mat-menu-item (click)="excluirMembro(item)" *ngIf="globals.informacoesUsuarioLogado.permissao == 'ADM'">
+                <mat-icon>delete</mat-icon>
+                <span>Excluir</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>portrait</mat-icon>
+                <span>Visualizar</span>
+              </button>
+            </mat-menu>
+
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+
+      <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 50, 100]" [showFirstLastButtons]="true">
+      </mat-paginator>
+    </div>
+
+  </mat-tab>
+
 </mat-tab-group>

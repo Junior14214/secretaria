@@ -1,3 +1,4 @@
+import { Congregacoes } from './../model/congregacoes';
 import { Globals } from './../globals';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { Router } from '@angular/router';
@@ -20,6 +21,8 @@ export class ListaComponent implements AfterContentChecked {
   router: Router;
   globals: Globals;
   validador = true;
+  congregacoes: Congregacoes[];
+  congregacaoSelecionada: string;
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -34,6 +37,20 @@ export class ListaComponent implements AfterContentChecked {
     this.router = router;
     this.globals = globals;
 
+    service.listarCongregacoes()
+      .subscribe(res => {
+        this.congregacoes = res;
+      })
+
+  }
+
+  public teste(congregacao) {
+    this.service.listarMembrosPorCongregacao(congregacao)
+      .subscribe(res => {
+        let novaLista;
+        novaLista = res;
+        this.dataSource.data = novaLista;
+      })
   }
 
   public editarMembro(id) {

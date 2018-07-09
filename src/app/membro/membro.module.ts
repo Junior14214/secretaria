@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { MembroService } from './membro.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -73,7 +74,7 @@ import {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    
+    FormsModule,
   ],
   
   declarations: [ListaComponent],
@@ -113,6 +114,7 @@ import {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    FormsModule
   ]
 })
 export class MembroModule { }
