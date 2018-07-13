@@ -20,9 +20,11 @@ export class RelatorioComponent implements OnInit {
   dataRelatorio1: string;
   dataRelatorio2: string;
   service: RelatorioService
-  listaDeDizimistas: Dizimistas[] = [];
+  listaDeDizimistasMembro: Dizimistas[] = [];
+  listaDeDizimistasObreiro: Dizimistas[] = [];
   total: number = 0;
-  teste: string = "teste";
+  totalMembros: number = 0;
+  totalObreiros: number = 0;
   globals: Globals;
   /*   dia = this.data.getDate();
     mes = this.data.getMonth()+1;
@@ -84,22 +86,17 @@ export class RelatorioComponent implements OnInit {
       .relatorio(1, this.globals.informacoesUsuarioLogado.congregacao, this.dataFormatada1, this.dataFormatada2)
       .subscribe(res => {
 
-        this.listaDeDizimistas = res;
-
-        if (this.listaDeDizimistas.length < 32) {
-          let obj = { id: 0, nome: '', valor: 0, data: '', congregacao: '', tipo: 0 }
-          for (let i = this.listaDeDizimistas.length; i < 32; i++) {
-            this.listaDeDizimistas.push(obj);
+        res.forEach((item) => {
+          this.total += item.valor
+          if (item.tipo_membro == 'Membro') {
+            this.listaDeDizimistasMembro.push(item);
+            this.totalMembros += item.valor;
+          } else {
+            this.listaDeDizimistasObreiro.push(item);
+            this.totalObreiros += item.valor;
           }
-        }
-
-        let g = 0;
-
-        this.listaDeDizimistas.forEach(function (item) {
-          g += item.valor
         });
 
-        this.total = g;
       });
   };
 
@@ -118,7 +115,8 @@ export class RelatorioComponent implements OnInit {
   }
 
   public novoRelatorio() {
-    this.listaDeDizimistas = [];
+    this.listaDeDizimistasMembro = [];
+    this.listaDeDizimistasObreiro = [];
     this.total = 0;
   }
 

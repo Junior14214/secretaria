@@ -86,7 +86,7 @@ export class ListaComponent implements AfterContentChecked {
           res.forEach(function (item) {
             //Apenas as congregações do usuário logado são inseridas na lista
             if (item.congregacao == congregacao) {
-              ELEMENT_DATA.push({ foto: item.foto, rol: item.id, nome: item.nome, cargo: item.cargo, congregacao: item.congregacao, telefone: item.telefone })
+              ELEMENT_DATA.push({ foto: item.foto, id: item.id, rol: item.rol, nome: item.nome, cargo: item.cargo, congregacao: item.congregacao, telefone: item.telefone, situacao: item.situacao })
             }
           })
           //Seta as propriedaes da lista preenchida na paginação
@@ -102,11 +102,13 @@ export class ListaComponent implements AfterContentChecked {
 
 export interface Element {
   foto: string,
+  id: number,
   rol: number,
   nome: string,
   cargo: string;
   congregacao: string
-  telefone: string
+  telefone: string,
+  situacao: string
 }
 
 let ELEMENT_DATA: Element[] = [];

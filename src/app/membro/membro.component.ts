@@ -23,6 +23,7 @@ export class MembroComponent implements OnInit {
     this.service = service;
     this.route = route;
     this.router = router;
+    this.membro.situacao = 'Pre Cadastro';
 
     this.route.params.subscribe(params => {
       let id = params['id'];
@@ -46,8 +47,8 @@ export class MembroComponent implements OnInit {
       .salvar(this.membro)
       .subscribe(res => {
         this.membro = new Membros();
+        this.membro.situacao = 'Pre Cadastro';
         this.base64textString = '';
-        console.log('salvou mizeravi');
       }, erro => {
         console.log(erro);
       })

@@ -24,6 +24,17 @@
       <input matInput [(ngModel)]="dizimista.nome" name="nome" placeholder="Nome/Descrição">
     </mat-form-field>
 
+    <mat-form-field *ngIf="dizimista.tipo == 1">
+      <mat-select [(ngModel)]="dizimista.tipo_membro" name="tipo" placeholder="Tipo de dizimista">
+        <mat-option value="Membro">
+          Membro
+        </mat-option>
+        <mat-option value="Obreiro">
+          Obreiro
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <mat-form-field>
       <input matInput [(ngModel)]="dizimista.valor" name="valor" placeholder="Valor">
     </mat-form-field>

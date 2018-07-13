@@ -51,7 +51,7 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item (click)="editarMembro(item.rol)">
+              <button mat-menu-item (click)="editarMembro(item.id)">
                 <mat-icon>create</mat-icon>
                 <span>Editar</span>
               </button>
@@ -87,9 +87,9 @@
           </mat-select>
         </mat-form-field>
 
-      <button (click)="teste(congregacaoSelecionada)"> teste </button>
-
-    {{congregacaoSelecionada}}
+      <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored botao" (click)="teste(congregacaoSelecionada)">
+        Buscar
+      </button>
 
     <div class="example-container mat-elevation-z8">
 
@@ -110,7 +110,7 @@
 
         <ng-container matColumnDef="Rol">
           <mat-header-cell *matHeaderCellDef> N° de Rol </mat-header-cell>
-          <mat-cell *matCellDef="let item"> {{item.id}} </mat-cell>
+          <mat-cell *matCellDef="let item"> {{item.rol}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="Nome">
@@ -129,8 +129,8 @@
         </ng-container>
 
         <ng-container matColumnDef="Telefone">
-          <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
-          <mat-cell *matCellDef="let item"> {{item.telefone}} </mat-cell>
+          <mat-header-cell *matHeaderCellDef> Situação </mat-header-cell>
+          <mat-cell *matCellDef="let item"> {{item.situacao}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="Acao">
@@ -141,7 +141,7 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item (click)="editarMembro(item.rol)">
+              <button mat-menu-item (click)="editarMembro(item.id)">
                 <mat-icon>create</mat-icon>
                 <span>Editar</span>
               </button>
@@ -162,8 +162,6 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
 
-      <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 50, 100]" [showFirstLastButtons]="true">
-      </mat-paginator>
     </div>
 
   </mat-tab>

@@ -1,6 +1,7 @@
 export class Membros {
 
     id: number;
+    rol: number;
     nome: string;
     pai: string;
     mae: string;
@@ -28,4 +29,5 @@ export class Membros {
     conjuje: string;
     nascimento_conjuje: string;
     foto: string;
+    situacao: string
  }

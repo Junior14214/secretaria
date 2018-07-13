@@ -117,6 +117,24 @@
                 </mat-select>
               </mat-form-field>
 
+              <mat-form-field>
+                <mat-select [(ngModel)]="membro.situacao" name="situacao" placeholder="Situação">
+                  <mat-option value="Pre Cadastro">
+                    Pré cadastro
+                  </mat-option>
+                  <mat-option value="Ativo">
+                    Ativo
+                  </mat-option>
+                  <mat-option value="Inativo">
+                    Inativo
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput [(ngModel)]="membro.rol" name="rol" placeholder="N° de Rol">
+              </mat-form-field>
+
               <br>
 
               <mat-form-field class="textArea">
