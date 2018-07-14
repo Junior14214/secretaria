@@ -23,8 +23,8 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-            <input matInput [(ngModel)]="senha" name="senha" placeholder="Senha">
-          </mat-form-field>
+          <input matInput [(ngModel)]="senha" name="senha" placeholder="Senha">
+        </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <input matInput [(ngModel)]="usuario.congregacao" name="congregacao" placeholder="Congregação">
@@ -41,6 +41,15 @@
             </mat-option>
             <mat-option value="USER">
               USER
+            </mat-option>
+            <mat-option value="SECRETARIO">
+              SECRETARIO
+            </mat-option>
+            <mat-option value="SECRETARIO_SEDE">
+              SECRETARIO_SEDE
+            </mat-option>
+            <mat-option value="MASTER">
+              MASTER
             </mat-option>
           </mat-select>
         </mat-form-field>

@@ -1,4 +1,4 @@
-<div class="example-container" style="padding-top: 10px">
+<div class="example-container" style="padding-top: 10px"  *ngIf="globals.informacoesUsuarioLogado.permissao != 'TESOUREIRO'">
 
   <div class="position" *ngIf="!membro.nome">
     <mat-form-field>

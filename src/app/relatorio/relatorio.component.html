@@ -29,7 +29,7 @@
         <li class="mdl-list__item">
           <span class="mdl-list__item-primary-content">
             <b>RELATÓRIO FINANÇEIRO REFERENTE AO MÊS DE: </b>
-            <span style="padding-left: 10px">DEZEMBRO DE 2018</span>
+            <span style="padding-left: 10px">{{mesAtual | uppercase}} DE {{data1 | date: 'yyyy'}}</span>
           </span>
         </li>
         <li class="mdl-list__item">
@@ -144,11 +144,12 @@
     </div>
 
   </mat-tab>
-  <mat-tab label="Relatório Finançeiro">
+  
+  <mat-tab label="Relatório Finançeiro" *ngIf="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO' || globals.informacoesUsuarioLogado.permissao == 'ADM' || globals.informacoesUsuarioLogado.permissao == 'DIRIGENTE' || globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE' || globals.informacoesUsuarioLogado.permissao == 'MASTER'">
     <app-demonstrativo></app-demonstrativo>
   </mat-tab>
 
-  <mat-tab label="Relatório Geral">
+  <mat-tab label="Relatório Geral" *ngIf="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE' || globals.informacoesUsuarioLogado.permissao == 'ADM' || globals.informacoesUsuarioLogado.permissao == 'MASTER'">
     <app-relatorio-geral></app-relatorio-geral>
   </mat-tab>
 </mat-tab-group>

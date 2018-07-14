@@ -18,12 +18,14 @@ export class MembroComponent implements OnInit {
   route: ActivatedRoute;
   router: Router;
   base64textString: string = "";
+  globals: Globals;
 
-  constructor(service: MembroService, route: ActivatedRoute, router: Router, private globals: Globals) {
+  constructor(service: MembroService, route: ActivatedRoute, router: Router, globals: Globals) {
     this.service = service;
     this.route = route;
     this.router = router;
     this.membro.situacao = 'Pre Cadastro';
+    this.globals = globals;
 
     this.route.params.subscribe(params => {
       let id = params['id'];

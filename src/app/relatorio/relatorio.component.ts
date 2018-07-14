@@ -13,6 +13,9 @@ import * as html2pdf from 'html2pdf.js';
   styleUrls: ['./relatorio.component.css']
 })
 export class RelatorioComponent implements OnInit {
+  meses = new Array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto",
+    "Setembro", "Outubro", "Novembro", "Dezembro");
+  mesAtual: string;
   data1 = new Date();
   data2 = new Date();
   dataFormatada1: string;
@@ -33,6 +36,7 @@ export class RelatorioComponent implements OnInit {
   constructor(service: RelatorioService, globals: Globals) {
     this.service = service;
     this.globals = globals;
+
   }
 
   public formatarData(data, number) {
@@ -68,6 +72,7 @@ export class RelatorioComponent implements OnInit {
       mesFormatado = '12';
     }
 
+    this.mesAtual = this.meses[this.data1.getMonth()];
 
     if (number == 1) {
       this.dataFormatada1 = ano + mesFormatado + dia;

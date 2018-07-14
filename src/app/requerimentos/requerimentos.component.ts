@@ -1,3 +1,4 @@
+import { Globals } from './../globals';
 import { UsuarioService } from './../usuario/usuario.service';
 import { MembroService } from './../membro/membro.service';
 import { Membros } from './../model/membro';
@@ -22,10 +23,12 @@ export class RequerimentosComponent implements OnInit {
   private usuarioService: UsuarioService;
   private conjuje: string = '';
   private cargo_consagracao: string = '';
+  private globals: Globals;
 
-  constructor(service: MembroService, usuarioService: UsuarioService) {
+  constructor(service: MembroService, usuarioService: UsuarioService, globals: Globals) {
     this.service = service;
     this.usuarioService = usuarioService;
+    this.globals = globals;
 
     this.usuarioService.buscarInformacoesUsuarioLogado(this.uidUsuarioLogado)
       .subscribe(res => {

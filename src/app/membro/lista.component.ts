@@ -40,7 +40,7 @@ export class ListaComponent implements AfterContentChecked {
     service.listarCongregacoes()
       .subscribe(res => {
         this.congregacoes = res;
-      })
+      });
 
   }
 

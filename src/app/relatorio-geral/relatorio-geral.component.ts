@@ -2,6 +2,9 @@ import { Globals } from './../globals';
 import { Dizimistas } from './../model/dizimista';
 import { Component, OnInit } from '@angular/core';
 import { RelatorioService } from '../relatorio/relatorio.service';
+import * as jsPDF from 'jspdf';
+import * as html2canvas from "html2canvas";
+import * as html2pdf from 'html2pdf.js';
 
 @Component({
   selector: 'app-relatorio-geral',
@@ -10,10 +13,13 @@ import { RelatorioService } from '../relatorio/relatorio.service';
 })
 export class RelatorioGeralComponent implements OnInit {
 
+  private data1 = new Date();
+  private data2 = new Date();
   private service: RelatorioService;
   private dataFormatada1: string;
   private dataFormatada2: string;
-  private listaDeDizimistas: Dizimistas[];
+  private listaDeDizimistasObreiros = [];
+  private listaDeDizimistasMembros = [];
   private congregacoes: string;
   private repasse_congregacoes: Object[] = [];
   private globals: Globals;
@@ -77,7 +83,17 @@ export class RelatorioGeralComponent implements OnInit {
 
     this.service.relatorio(1, this.globals.informacoesUsuarioLogado.congregacao, this.dataFormatada1, this.dataFormatada2)
       .subscribe(res => {
-        this.listaDeDizimistas = res;
+
+        res.forEach((item) => {
+          if (item.tipo_membro == 'Membro') {
+            this.listaDeDizimistasMembros.push(item);
+            console.log(item);
+          } else {
+            this.listaDeDizimistasObreiros.push(item);
+            console.log(item);
+          }
+        })
+
       })
 
     this.repasseCongregacoes(1, this.dataFormatada1, this.dataFormatada2)
@@ -140,7 +156,7 @@ export class RelatorioGeralComponent implements OnInit {
       .subscribe(res => {
         this.listaSaidas = res;
       })
-      this.totalDespesas(5, congregacao, data1, data2);
+    this.totalDespesas(5, congregacao, data1, data2);
   }
 
   public totalDespesas(tipo, congregacao, data1, data2) {
@@ -149,6 +165,35 @@ export class RelatorioGeralComponent implements OnInit {
         this.valorTotalDespesas = res;
       })
   }
+
+  public novoRelatorio() {
+    this.listaDeDizimistasObreiros = [];
+    this.listaDeDizimistasMembros = [];
+    this.congregacoes = '';
+    this.repasse_congregacoes = [];
+    this.valorTotalDizimos = 0;
+    this.valorTotalOfertas = 0;
+    this.valorTotalOfertasEspeciais = 0;
+    this.valorTotalOutros = 0;
+    this.valorTotalDespesas = 0;
+    this.totalRepasseCongregacoes = 0;
+    this.listaSaidas = [];
+  };
+
+  public gerarPDF() {
+    var element = document.getElementById('capture');
+    var opt = {
+      margin: 0.2,
+      filename: 'Relatorio_Mensal_Dizimistas.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { width: 1000 },
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    // New Promise-based usage:
+    html2pdf().from(element).set(opt).save();
+  }
+
 
   ngOnInit() {
   }

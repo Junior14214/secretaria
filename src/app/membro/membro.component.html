@@ -117,7 +117,7 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field>
+              <mat-form-field *ngIf="globals.informacoesUsuarioLogado.permissao == 'SECRETARIO_SEDE'">
                 <mat-select [(ngModel)]="membro.situacao" name="situacao" placeholder="Situação">
                   <mat-option value="Pre Cadastro">
                     Pré cadastro
@@ -131,7 +131,7 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field>
+              <mat-form-field *ngIf="globals.informacoesUsuarioLogado.permissao == 'SECRETARIO_SEDE'">
                 <input matInput [(ngModel)]="membro.rol" name="rol" placeholder="N° de Rol">
               </mat-form-field>
 
@@ -151,13 +151,13 @@
     </form>
 
   </mat-tab>
-  <mat-tab label="Cadastro de Entradas">
+  <mat-tab label="Cadastro de Entradas" *ngIf="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO' || globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE' || globals.informacoesUsuarioLogado.permissao == 'ADM' || globals.informacoesUsuarioLogado.permissao == 'MASTER' || globals.informacoesUsuarioLogado.permissao == 'DIRIGENTE'">
 
     <app-dizimista></app-dizimista>
 
   </mat-tab>
 
-  <mat-tab label="Cadastro de Usuários">
+  <mat-tab label="Cadastro de Usuários" *ngIf="globals.informacoesUsuarioLogado.permissao == 'MASTER'">
 
     <app-usuario></app-usuario>
 

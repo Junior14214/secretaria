@@ -1,3 +1,5 @@
+import { Congregacoes } from './../model/congregacoes';
+import { MembroService } from './../membro/membro.service';
 import { Globals } from './../globals';
 import { Dizimistas } from './../model/dizimista';
 import { RelatorioService } from './../relatorio/relatorio.service';
@@ -13,6 +15,11 @@ import * as html2pdf from 'html2pdf.js';
 })
 export class DemonstrativoComponent implements OnInit {
 
+  private congregacao: string;
+  private congregacoes: Congregacoes[];
+  meses = new Array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto",
+    "Setembro", "Outubro", "Novembro", "Dezembro");
+  mesAtual: string;
   data1 = new Date();
   data2 = new Date();
   private dataFormatada1: string;
@@ -20,6 +27,7 @@ export class DemonstrativoComponent implements OnInit {
   private dataRelatorio1: string;
   private dataRelatorio2: string;
   private service: RelatorioService;
+  private membroService: MembroService;
   private totalDizimos: number;
   private totalOfertas: number;
   private totalOfertasEspeciais: number;
@@ -29,9 +37,16 @@ export class DemonstrativoComponent implements OnInit {
   private globals: Globals;
   @Input() testeNaTela: string;
 
-  constructor(service: RelatorioService, globals: Globals) {
+  constructor(service: RelatorioService, globals: Globals, membroService: MembroService) {
     this.service = service;
     this.globals = globals;
+    this.congregacao = this.globals.informacoesUsuarioLogado.congregacao;
+    this.membroService = membroService;
+
+    this.membroService.listarCongregacoes()
+      .subscribe(res => {
+        this.congregacoes = res;
+      });
   }
 
   public formatarData(data, number) {
@@ -67,13 +82,14 @@ export class DemonstrativoComponent implements OnInit {
       mesFormatado = '12';
     }
 
+    this.mesAtual = this.meses[this.data1.getMonth()];
 
     if (number == 1) {
       this.dataFormatada1 = ano + mesFormatado + dia;
-      this.dataRelatorio1 =  dia + '/' + mesFormatado + '/' + ano;
+      this.dataRelatorio1 = dia + '/' + mesFormatado + '/' + ano;
     } else {
       this.dataFormatada2 = ano + mesFormatado + dia;
-      this.dataRelatorio2 =  dia + '/' + mesFormatado + '/' + ano;
+      this.dataRelatorio2 = dia + '/' + mesFormatado + '/' + ano;
     }
   }
 
@@ -82,7 +98,7 @@ export class DemonstrativoComponent implements OnInit {
     this.formatarData(data1, 1);
     this.formatarData(data2, 2);
 
-    this.service.relatorioGeral(1, this.globals.informacoesUsuarioLogado.congregacao, this.dataFormatada1, this.dataFormatada2)
+    this.service.relatorioGeral(1, this.congregacao, this.dataFormatada1, this.dataFormatada2)
       .subscribe(res => {
         this.totalDizimos = res;
       })
@@ -92,7 +108,7 @@ export class DemonstrativoComponent implements OnInit {
 
   public totalGeralOfertas(tipo, data1, data2) {
 
-    this.service.relatorioGeral(tipo, this.globals.informacoesUsuarioLogado.congregacao, data1, data2)
+    this.service.relatorioGeral(tipo, this.congregacao, data1, data2)
       .subscribe(res => {
         this.totalOfertas = res;
       })
@@ -102,7 +118,7 @@ export class DemonstrativoComponent implements OnInit {
 
   public totalGeralOfertasEspeciais(tipo, data1, data2) {
 
-    this.service.relatorioGeral(tipo, this.globals.informacoesUsuarioLogado.congregacao, data1, data2)
+    this.service.relatorioGeral(tipo, this.congregacao, data1, data2)
       .subscribe(res => {
         this.totalOfertasEspeciais = res;
       })
@@ -112,7 +128,7 @@ export class DemonstrativoComponent implements OnInit {
 
   public totalGeralOutros(tipo, data1, data2) {
 
-    this.service.relatorioGeral(tipo, this.globals.informacoesUsuarioLogado.congregacao, data1, data2)
+    this.service.relatorioGeral(tipo, this.congregacao, data1, data2)
       .subscribe(res => {
         this.totalOutros = res;
       })
@@ -122,7 +138,7 @@ export class DemonstrativoComponent implements OnInit {
 
   public totalGeralSaidas(tipo, data1, data2) {
 
-    this.service.relatorioGeral(tipo, this.globals.informacoesUsuarioLogado.congregacao, data1, data2)
+    this.service.relatorioGeral(tipo, this.congregacao, data1, data2)
       .subscribe(res => {
         this.totalSaidas = res;
       })
@@ -133,7 +149,7 @@ export class DemonstrativoComponent implements OnInit {
   public listaDeSaidas(tipo, data1, data2) {
     console.log(tipo, data1, data2);
 
-    this.service.relatorio(tipo, this.globals.informacoesUsuarioLogado.congregacao, data1, data2)
+    this.service.relatorio(tipo, this.congregacao, data1, data2)
       .subscribe(res => {
         console.log(res);
         this.saida = res;
@@ -164,7 +180,7 @@ export class DemonstrativoComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.testeNaTela);
+
   }
 
 }
