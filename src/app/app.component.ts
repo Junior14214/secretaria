@@ -20,6 +20,7 @@ export class AppComponent implements AfterContentChecked {
   usuario: Usuario = new Usuario();
   verificaSessao;
   count: number = 0;
+  contador = 0;
 
   constructor(public afAuth: AngularFireAuth, private route: Router, service: UsuarioService) {
     this.user = afAuth.authState;
@@ -30,10 +31,13 @@ export class AppComponent implements AfterContentChecked {
   public sair() {
     this.afAuth.auth.signOut().then(() => {
       this.route.navigate(['/login']);
+      this.usuario = new Usuario();
+      this.count = 0;
     });
   }
 
   ngAfterContentChecked() {
+
     this.verificaSessao = firebase.auth().currentUser;
     if (firebase.auth().currentUser) {
       let uid = firebase.auth().currentUser.uid;
@@ -45,7 +49,10 @@ export class AppComponent implements AfterContentChecked {
           });
         this.count++;
       }
+      if(this.contador === 0){
+        this.route.navigate(['/home']);
+        this.contador++;
     }
   }
-
+}
 }

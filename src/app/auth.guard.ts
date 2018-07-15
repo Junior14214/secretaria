@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
         console.log(localStorage);
         console.log("VALIDATE");
 
-        console.log(localStorage.length != 0);
+        console.log(localStorage.length);
 
         if (localStorage.length != 0) {
             return true;

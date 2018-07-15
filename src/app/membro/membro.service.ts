@@ -54,7 +54,7 @@ export class MembroService {
   public excluir(membro) {
 
     return this.http
-      .delete(this.url + '/' + membro.rol);
+      .delete(this.url + '/' + membro.id);
   }
 
   public listarCongregacoes(): Observable<Congregacoes[]> {

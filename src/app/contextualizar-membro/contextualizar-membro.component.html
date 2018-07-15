@@ -1,0 +1,127 @@
+<table id="capture" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="width: 1000px; height: 500px">
+  <tbody>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric" id="alinhamento_td" colspan="5">
+        <h5>
+          <b>Ficha de Membro</b>
+        </h5>
+      </td>
+    </tr>
+    <tr>
+      <td id="alinhamento_td" class="mdl-data-table__cell--non-numeric" rowspan="2" id="alinhamento_td">
+        <img src="{{membro.foto}}" width="150" height="150">
+      </td>
+      <td id="alinhamento_td">
+        <b>N° de ROL: </b>
+        <br> {{membro.rol}}</td>
+      <td id="alinhamento_td">
+        <b>Nome: </b>
+        <br> {{membro.nome}}</td>
+      <td id="alinhamento_td">
+        <b>Pai: </b>
+        <br> {{membro.pai}}</td>
+      <td id="alinhamento_td">
+        <b>Mãe: </b>
+        <br> {{membro.mae}}</td>
+    </tr>
+    <tr>
+      <td id="alinhamento_td" class="mdl-data-table__cell--non-numeric" id="alinhamento_td">
+        <b>Data de Nascimento: </b>
+        <br> {{membro.data_de_nascimento}}</td>
+      <td id="alinhamento_td">
+        <b>Profissão: </b>
+        <br> {{membro.profissao}}</td>
+      <td id="alinhamento_td">
+        <b>Telefone: </b>
+        <br> {{membro.telefone}}</td>
+      <td id="alinhamento_td">
+        <b>RG: </b>
+        <br> {{membro.rg}}</td>
+    </tr>
+    <tr>
+      <td id="alinhamento_td" class="mdl-data-table__cell--non-numeric" id="alinhamento_td">
+        <b>País: </b>
+        <br> {{membro.pais}}</td>
+      <td id="alinhamento_td">
+        <b>Naturalidade: </b>
+        <br> {{membro.naturalidade}}</td>
+      <td id="alinhamento_td" class="mdl-data-table__cell--non-numeric" id="alinhamento_td">
+        <b>Estado Civil: </b>
+        <br> {{membro.estado_civil}}</td>
+      <td id="alinhamento_td">
+        <b>Endereço: </b>
+        <br> {{membro.endereco}}</td>
+      <td id="alinhamento_td">
+        <b>Bairro: </b>
+        <br> {{membro.bairro}}</td>
+    </tr>
+    <tr>
+      <td id="alinhamento_td" class="mdl-data-table__cell--non-numeric" id="alinhamento_td">
+        <b>Cidade: </b>
+        <br> {{membro.cidade}}</td>
+      <td id="alinhamento_td">
+        <b>CEP: </b>
+        <br> {{membro.cep}}</td>
+      <td id="alinhamento_td">
+        <b>Batismo nas Águas: </b>
+        <br> {{membro.batismo_nas_aguas}}</td>
+      <td id="alinhamento_td">
+        <b>Batismo no Espírito Santo: </b>
+        <br> {{membro.batismo_no_espirito_santo}}</td>
+      <td id="alinhamento_td">
+        <b>Data de Inicio: </b>
+        <br> {{membro.data_de_inicio}}</td>
+    </tr>
+    <tr>
+      <td id="alinhamento_td" class="mdl-data-table__cell--non-numeric" id="alinhamento_td">
+        <b>Dirigente: </b>
+        <br> {{membro.dirigente}}</td>
+      <td id="alinhamento_td">
+        <b>Cargo: </b>
+        <br> {{membro.cargo}}</td>
+      <td id="alinhamento_td">
+        <b>Congregação: </b>
+        <br> {{membro.congregacao}}</td>
+      <td id="alinhamento_td">
+        <b>Conjuje: </b>
+        <br> {{membro.conjuje}}</td>
+      <td id="alinhamento_td">
+        <b>Nascimento do Conjuje: </b>
+        <br> {{membro.nascimento_conjuje}}</td>
+    </tr>
+    <tr>
+      <td id="alinhamento_td" class="mdl-data-table__cell--non-numeric" id="alinhamento_td">
+        <b>Situação: </b>
+        <br> {{membro.situacao}}</td>
+      <td id="alinhamento_td">
+        <b>Sexo: </b>
+        <br> {{membro.sexo}}</td>
+      <td id="alinhamento_td">
+        <b>CPF: </b>
+        <br> {{membro.cpf}}</td>
+      <td id="alinhamento_td" colspan="2">
+        <b>Observação: </b>
+        <br> {{membro.observacao}}
+      </td>
+    </tr>
+    <tr>
+      <td id="alinhamento_td" class="mdl-data-table__cell--non-numeric">
+        <b> Historico : </b>
+        <br> {{membro.historico}}</td>
+      <td id="alinhamento_td" colspan="4">
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored myButton" (click)="gerarPDF()">
+  Gerar PDF
+</button>
+
+<!-- private Integer id;
+	private String historico;
+	private String observacao;
+	private String conjuje;
+	private String nascimento_conjuje;
+	private String situacao; -->

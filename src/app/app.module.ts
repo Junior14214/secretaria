@@ -28,6 +28,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { RequerimentosComponent } from './requerimentos/requerimentos.component';
 import { VisualizarMembroComponent } from './visualizar-membro/visualizar-membro.component';
 import { RelatorioGeralComponent } from './relatorio-geral/relatorio-geral.component';
+import { ContextualizarMembroComponent } from './contextualizar-membro/contextualizar-membro.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBkVH-_4pVdyOqtLKh6KuD-38d_qwLvob4",
@@ -44,6 +45,7 @@ export const firebaseConfig = {
     MembroComponent,
     HomeComponent,
     VisualizarMembroComponent,
+    ContextualizarMembroComponent,
 
   ],
   imports: [

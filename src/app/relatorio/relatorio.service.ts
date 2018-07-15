@@ -1,3 +1,5 @@
+import { FinanceiroDiario } from './../model/financeiro_diario';
+import { Congregacoes } from './../model/congregacoes';
 import { Dizimistas } from './../model/dizimista';
 import { Observable } from 'rxjs/observable';
 import { Http, Headers } from '@angular/http';
@@ -11,6 +13,7 @@ export class RelatorioService {
   private urlRelatorio: string = 'http://localhost:8080/secretaria/dizimista';
   private urlRelatorioGeral: string = 'http://localhost:8080/secretaria/dizimista/total';
   private urlRelatorioGeralSede: string = 'http://localhost:8080/secretaria/repasseCongregacoes'
+  private urlRelatorioFinanceiroDiario: string = 'http://localhost:8080/financeiro/diario'
 
   constructor(http: Http) {
     this.http = http;
@@ -31,6 +34,12 @@ export class RelatorioService {
   public relatorioGeralaSede(tipo, data1, data2): Observable<Response[]> {
     return this.http
       .get(this.urlRelatorioGeralSede + '/' + tipo + '/' + data1 + '/' + data2)
+      .map(res => res.json())
+  }
+
+  public relatorioFinanceiroDiario(congregacao): Observable<FinanceiroDiario> {
+    return this.http
+      .get(this.urlRelatorioFinanceiroDiario + '/' + congregacao)
       .map(res => res.json())
   }
 

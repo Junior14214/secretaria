@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MembroService } from './membro.service';
 import { NgModule } from '@angular/core';
@@ -75,6 +76,7 @@ import {
     MatToolbarModule,
     MatTooltipModule,
     FormsModule,
+    RouterModule
   ],
   
   declarations: [ListaComponent],

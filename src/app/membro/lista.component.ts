@@ -58,6 +58,10 @@ export class ListaComponent implements AfterContentChecked {
     this.router.navigate(['cadastro/' + id]);
   }
 
+  public contextualizarMembro(id) {
+    this.router.navigate(['contextualizar/' + id]);
+  }
+
   public excluirMembro(membro) {
 
     this.service

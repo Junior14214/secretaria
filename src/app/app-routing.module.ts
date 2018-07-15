@@ -1,3 +1,4 @@
+import { ContextualizarMembroComponent } from './contextualizar-membro/contextualizar-membro.component';
 import { RequerimentosComponent } from './requerimentos/requerimentos.component';
 import { RelatorioComponent } from './relatorio/relatorio.component';
 import { MembroComponent } from './membro/membro.component';
@@ -11,14 +12,15 @@ import { AuthGuard } from './auth.guard';
 
 
 export const APP_ROUTES: Routes = [
-  { path: '', component: HomeComponent, canActivate:[AuthGuard] },
+  { path: 'home', component: HomeComponent, canActivate:[AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'lista', component: ListaComponent, canActivate:[AuthGuard] },
   { path: 'cadastro', component: MembroComponent, canActivate:[AuthGuard] },
   { path: 'cadastro/:id', component: MembroComponent, canActivate:[AuthGuard] },
   { path: 'relatorio', component: RelatorioComponent, canActivate:[AuthGuard] },
   { path: 'requerimentos', component: RequerimentosComponent, canActivate:[AuthGuard] },
-  { path: '**', redirectTo: '' },
+  {path: 'contextualizar/:id', component: ContextualizarMembroComponent, canActivate:[AuthGuard]},
+  { path: '**', redirectTo: 'home' },
 
 
 ]

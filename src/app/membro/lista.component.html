@@ -149,7 +149,7 @@
                 <mat-icon>delete</mat-icon>
                 <span>Excluir</span>
               </button>
-              <button mat-menu-item>
+              <button mat-menu-item (click)="contextualizarMembro(item.id)">
                 <mat-icon>portrait</mat-icon>
                 <span>Visualizar</span>
               </button>

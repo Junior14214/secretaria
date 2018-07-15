@@ -9,8 +9,8 @@ export class Membros {
     data_de_nascimento: string;
     profissao: string;
     telefone: string;
-    rg: number;
-    cpf: number;
+    rg: string;
+    cpf: string;
     pais: string;
     naturalidade: string;
     estado_civil: string;
