@@ -1,3 +1,38 @@
+<div *ngFor="let item of globals.mensagens">
+  <div class="mdl-components__success" *ngIf="item.type == 'success'">
+    <div style="float: left">
+      <i class="material-icons"> done </i>
+    </div>
+    <div style="margin-top: 3px; margin-left: 30px">
+      <b>{{item.text}}</b>
+    </div>
+  </div>
+</div>
+
+
+<div *ngFor="let item of globals.mensagens">
+  <div class="mdl-components__warning" *ngIf="item.type == 'warning'">
+    <div style="float: left">
+      <i class="material-icons"> warning </i>
+    </div>
+    <div style="margin-top: 3px; margin-left: 30px">
+      <b>{{item.text}}</b>
+    </div>
+  </div>
+</div>
+
+
+<div *ngFor="let item of globals.mensagens">
+  <div class="mdl-components__danger" *ngIf="item.type == 'error'">
+    <div style="float: left">
+      <i class="material-icons"> error </i>
+    </div>
+    <div style="margin-top: 3px; margin-left: 30px">
+      <b>{{item.text}}</b>
+    </div>
+  </div>
+</div>
+
 <form class="formulario">
   <div class="inputs">
     <mat-form-field>
@@ -15,8 +50,8 @@
           Outros
         </mat-option>
         <mat-option value="5">
-            Saídas
-          </mat-option>
+          Saídas
+        </mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -150,7 +185,7 @@
     </table>
 
   </div>
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored botao" (click)="salvarMinhaBenga()">
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored botao" (click)="salvarValores()">
     Salvar
   </button>
 </form>

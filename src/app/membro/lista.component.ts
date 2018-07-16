@@ -71,7 +71,9 @@ export class ListaComponent implements AfterContentChecked {
         let indice = novaLista.indexOf(membro);
         novaLista.splice(indice, 1);
         this.dataSource.data = novaLista;
-
+        this.globals.abrirAlerta('success', 'Membro excluído com sucesso!');
+      }, error => {
+        this.globals.abrirAlerta('error', 'Não foi possível excluir o membro ' + error);
       })
 
   }

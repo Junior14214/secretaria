@@ -102,6 +102,10 @@ export class RelatorioComponent implements OnInit {
           }
         });
 
+        if (this.listaDeDizimistasMembro.length < 1 && this.listaDeDizimistasObreiro.length < 1) {
+          this.globals.abrirAlerta('warning', 'Não foram encontrados dizimistas no periodo selecionado!');
+        }
+
       });
   };
 

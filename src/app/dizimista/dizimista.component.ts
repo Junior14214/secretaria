@@ -57,14 +57,16 @@ export class DizimistaComponent implements OnInit {
     this.lista.splice(index, 1);
   }
 
-  public salvarMinhaBenga() {
+  public salvarValores() {
 
     this.service
       .salvar(this.lista)
       .subscribe(res => {
         this.dizimista = new Dizimistas();
         this.lista = [];
-        console.log('Salvou')
+        this.globals.abrirAlerta('success', 'Cadastrado com sucesso!');
+      }, erro => {
+        this.globals.abrirAlerta('error', 'Não foi possivel cadastrar os valores ' + erro);
       })
   }
 

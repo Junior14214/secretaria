@@ -27,4 +27,40 @@
   .input{
     width: 300px
   }
+
+  .mdl-components__warning {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgb(247, 234, 123);
+    padding: 10px;
+    border-radius: 2px;
+    color: #212121;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.mdl-components__danger {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgb(247, 118, 118);
+    padding: 10px;
+    border-radius: 2px;
+    color: #ffffff;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.mdl-components__success {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgb(192, 255, 176);
+    padding: 10px;
+    border-radius: 2px;
+    color: #3a3737;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
   

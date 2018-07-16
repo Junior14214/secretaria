@@ -48,16 +48,18 @@ export class MembroComponent implements OnInit {
     this.service
       .salvar(this.membro)
       .subscribe(res => {
+        if (this.membro.id) {
+          this.globals.abrirAlerta('success', 'Membro alterado com sucesso!');
+        } else {
+          this.globals.abrirAlerta('success', 'Membro cadastrado com sucesso');
+        }
         this.membro = new Membros();
         this.membro.situacao = 'Pre Cadastro';
         this.base64textString = '';
+
       }, erro => {
-        console.log(erro);
+        this.globals.abrirAlerta('error', 'Não foi possível cadastrar o membro ' + erro);
       })
-  }
-
-  public upload() {
-
   }
 
   handleFileSelect(evt) {

@@ -1,6 +1,42 @@
 <mat-tab-group>
   <mat-tab label="Lista de Membros" *ngIf="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO' || globals.informacoesUsuarioLogado.permissao == 'DIRIGENTE' || globals.informacoesUsuarioLogado.permissao == 'SECRETARIO' || globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE'">
 
+    <div *ngFor="let item of globals.mensagens">
+      <div class="mdl-components__success" *ngIf="item.type == 'success'">
+        <div style="float: left">
+          <i class="material-icons"> done </i>
+        </div>
+        <div style="margin-top: 3px; margin-left: 30px">
+          <b>{{item.text}}</b>
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngFor="let item of globals.mensagens">
+      <div class="mdl-components__warning" *ngIf="item.type == 'warning'">
+        <div style="float: left">
+          <i class="material-icons"> warning </i>
+        </div>
+        <div style="margin-top: 3px; margin-left: 30px">
+          <b>{{item.text}}</b>
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngFor="let item of globals.mensagens">
+      <div class="mdl-components__danger" *ngIf="item.type == 'error'">
+        <div style="float: left">
+          <i class="material-icons"> error </i>
+        </div>
+        <div style="margin-top: 3px; margin-left: 30px">
+          <b>{{item.text}}</b>
+        </div>
+      </div>
+    </div>
+
+
     <div class="example-container mat-elevation-z8">
 
       <div class="example-header">
@@ -79,17 +115,52 @@
   </mat-tab>
   <mat-tab label="Lista de Membros" *ngIf="globals.informacoesUsuarioLogado.permissao == 'SECRETARIO_SEDE' || globals.informacoesUsuarioLogado.permissao == 'ADM' || globals.informacoesUsuarioLogado.permissao == 'MASTER'">
 
-      <mat-form-field>
-          <mat-select [(ngModel)]="congregacaoSelecionada" name="congregacao" placeholder="Congregação">
-            <mat-option *ngFor="let item of congregacoes" value="{{item.congregacao}}">
-              {{item.congregacao}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+    <mat-form-field>
+      <mat-select [(ngModel)]="congregacaoSelecionada" name="congregacao" placeholder="Congregação">
+        <mat-option *ngFor="let item of congregacoes" value="{{item.congregacao}}">
+          {{item.congregacao}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-      <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored botao" (click)="teste(congregacaoSelecionada)">
-        Buscar
-      </button>
+    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored botao" (click)="teste(congregacaoSelecionada)">
+      Buscar
+    </button>
+
+    <div *ngFor="let item of globals.mensagens">
+        <div class="mdl-components__success" *ngIf="item.type == 'success'">
+          <div style="float: left">
+            <i class="material-icons"> done </i>
+          </div>
+          <div style="margin-top: 3px; margin-left: 30px">
+            <b>{{item.text}}</b>
+          </div>
+        </div>
+      </div>
+  
+  
+      <div *ngFor="let item of globals.mensagens">
+        <div class="mdl-components__warning" *ngIf="item.type == 'warning'">
+          <div style="float: left">
+            <i class="material-icons"> warning </i>
+          </div>
+          <div style="margin-top: 3px; margin-left: 30px">
+            <b>{{item.text}}</b>
+          </div>
+        </div>
+      </div>
+  
+  
+      <div *ngFor="let item of globals.mensagens">
+        <div class="mdl-components__danger" *ngIf="item.type == 'error'">
+          <div style="float: left">
+            <i class="material-icons"> error </i>
+          </div>
+          <div style="margin-top: 3px; margin-left: 30px">
+            <b>{{item.text}}</b>
+          </div>
+        </div>
+      </div>
 
     <div class="example-container mat-elevation-z8">
 
