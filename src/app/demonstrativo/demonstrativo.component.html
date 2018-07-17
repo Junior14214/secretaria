@@ -1,6 +1,8 @@
 <form>
   <div *ngIf="!saida.length">
 
+    <app-alertas></app-alertas>
+
     <div class="div">
 
       <mat-form-field *ngIf="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE' || globals.informacoesUsuarioLogado.permissao == 'ADM' || globals.informacoesUsuarioLogado.permissao == 'MASTER'">

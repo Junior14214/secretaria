@@ -1,3 +1,4 @@
+import { AlertasModule } from './../alertas/alertas.module';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,7 +14,8 @@ import { MatDatepickerModule, MatInputModule, MatDialogModule, MatSelectModule }
     MatInputModule,
     FormsModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    AlertasModule
   ],
   declarations: [DemonstrativoComponent],
   exports: [
@@ -22,7 +24,8 @@ import { MatDatepickerModule, MatInputModule, MatDialogModule, MatSelectModule }
     MatInputModule,
     FormsModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    AlertasModule
   ],
 })
 export class DemonstrativoModule { }

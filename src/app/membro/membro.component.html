@@ -4,51 +4,7 @@
     <form (submit)="salvar($event)" class="formulario">
       <div class="example-container">
 
-        <!--  <mat-grid-list cols="4" rowHeight="4:1">
-              <mat-grid-tile rowspan="4">
-                <img src="{{base64textString}}" width="180" height="250">
-              </mat-grid-tile>
-              <mat-grid-tile colspan="2"></mat-grid-tile>
-              <mat-grid-tile>
-                  <label for='selecao-arquivo'>Selecionar uma foto</label>
-                  <input id='selecao-arquivo' type='file'  (change)="handleFileSelect($event)">
-              </mat-grid-tile>
-            </mat-grid-list> -->
-
-            <div *ngFor="let item of globals.mensagens">
-                <div class="mdl-components__success" *ngIf="item.type == 'success'">
-                  <div style="float: left">
-                      <i class="material-icons"> done </i>
-                  </div>
-                  <div style="margin-top: 3px; margin-left: 30px">
-                    <b>{{item.text}}</b>
-                  </div>
-                </div>
-              </div>
-
-
-        <div *ngFor="let item of globals.mensagens">
-            <div class="mdl-components__warning" *ngIf="item.type == 'warning'">
-              <div style="float: left">
-                  <i class="material-icons"> warning </i>
-              </div>
-              <div style="margin-top: 3px; margin-left: 30px">
-                <b>{{item.text}}</b>
-              </div>
-            </div>
-          </div>
-  
-
-        <div *ngFor="let item of globals.mensagens">
-          <div class="mdl-components__danger" *ngIf="item.type == 'error'">
-            <div style="float: left">
-              <i class="material-icons"> error </i>
-            </div>
-            <div style="margin-top: 3px; margin-left: 30px">
-              <b>{{item.text}}</b>
-            </div>
-          </div>
-        </div>
+        <app-alertas></app-alertas>
 
         <table>
           <tr>

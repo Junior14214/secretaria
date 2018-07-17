@@ -678,4 +678,9 @@
         -ms-flex-align: center;
             align-items: center;
   }
+
+  .material-icons{
+    font-size: 100px;
+    color: #00bbd6;
+  }
   

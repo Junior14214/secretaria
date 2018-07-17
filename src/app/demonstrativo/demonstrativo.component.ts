@@ -154,6 +154,10 @@ export class DemonstrativoComponent implements OnInit {
         console.log(res);
         this.saida = res;
       })
+
+    if (this.saida.length == 0) {
+      this.globals.abrirAlerta('warning', 'Não foram encontrados relatórios para o período selecionado!')
+    }
   }
 
   public novoRelatorio() {

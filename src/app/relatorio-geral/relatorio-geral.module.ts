@@ -1,3 +1,4 @@
+import { AlertasModule } from './../alertas/alertas.module';
 import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule, MatSelectModule, MatInputModule } from '@angular/material';
 import { RelatorioGeralComponent } from './relatorio-geral.component';
@@ -10,7 +11,8 @@ import { CommonModule } from '@angular/common';
     MatDatepickerModule,
     MatSelectModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    AlertasModule
   ],
   declarations: [RelatorioGeralComponent],
   exports: [
@@ -18,7 +20,8 @@ import { CommonModule } from '@angular/common';
     MatDatepickerModule,
     MatSelectModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    AlertasModule
   ]
 })
 export class RelatorioGeralModule { }

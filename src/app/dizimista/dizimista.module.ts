@@ -1,3 +1,5 @@
+import { AlertasModule } from './../alertas/alertas.module';
+import { AlertasComponent } from './../alertas/alertas.component';
 import { FormsModule } from '@angular/forms';
 import { DizimistaService } from './dizimista.service';
 import { DizimistaComponent } from './dizimista.component';
@@ -15,14 +17,16 @@ import {
     FormsModule,
     MatInputModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    AlertasModule
   ],
   declarations: [DizimistaComponent],
   exports: [
     DizimistaComponent,
     MatInputModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    AlertasModule
   ],
   providers: [DizimistaService]
 })

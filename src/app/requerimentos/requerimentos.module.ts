@@ -1,3 +1,4 @@
+import { AlertasModule } from './../alertas/alertas.module';
 import { RequerimentosComponent } from './requerimentos.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -73,7 +74,8 @@ import { FormsModule } from '@angular/forms';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    FormsModule
+    FormsModule,
+    AlertasModule
   ],
   declarations: [RequerimentosComponent],
   exports: [
@@ -110,7 +112,8 @@ import { FormsModule } from '@angular/forms';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    FormsModule
+    FormsModule,
+    AlertasModule
 
   ]
 })

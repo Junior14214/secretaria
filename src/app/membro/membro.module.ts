@@ -1,3 +1,4 @@
+import { AlertasModule } from './../alertas/alertas.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MembroService } from './membro.service';
@@ -76,7 +77,8 @@ import {
     MatToolbarModule,
     MatTooltipModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    AlertasModule
   ],
   
   declarations: [ListaComponent],
@@ -116,7 +118,8 @@ import {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    FormsModule
+    FormsModule,
+    AlertasModule
   ]
 })
 export class MembroModule { }

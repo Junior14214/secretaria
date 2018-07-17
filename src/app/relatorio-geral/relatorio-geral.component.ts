@@ -164,6 +164,10 @@ export class RelatorioGeralComponent implements OnInit {
       .subscribe(res => {
         this.valorTotalDespesas = res;
       })
+
+    if (this.repasse_congregacoes.length == 0) {
+      this.globals.abrirAlerta('warning', 'Não foram encontrados relatórios para o período selecionado!')
+    }
   }
 
   public novoRelatorio() {

@@ -5,7 +5,6 @@ import * as firebase from 'firebase/app';
 
 @Injectable()
 export class Globals {
-    role: string = 'teste';
     private idUsuarioLogado = firebase.auth().currentUser.uid;
     private service: UsuarioService;
     informacoesUsuarioLogado: Usuario;

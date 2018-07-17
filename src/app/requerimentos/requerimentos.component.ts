@@ -42,7 +42,7 @@ export class RequerimentosComponent implements OnInit {
       margin: 0.2,
       filename: 'Ficha_de_requerimento_' + this.tipoDeRequerimento + '.pdf',
       image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { width: 1000},
+      html2canvas: { width: 1000 },
       jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
 
@@ -61,6 +61,8 @@ export class RequerimentosComponent implements OnInit {
     this.service.buscarPorId(id)
       .subscribe(res => {
         this.membro = res;
+      }, error => {
+        this.globals.abrirAlerta('error', 'Membro não encontrado, por favor digite um n° de ROL válido')
       })
   }
 
