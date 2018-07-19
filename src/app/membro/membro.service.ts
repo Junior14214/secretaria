@@ -1,3 +1,4 @@
+import { Usuario } from './../model/usuario';
 import { Router } from '@angular/router';
 import { Membros } from './../model/membro';
 import { Injectable } from '@angular/core';
@@ -14,7 +15,10 @@ export class MembroService {
   private headers: Headers;
   private url: string = 'http://localhost:8080/secretaria/membro';
   private urlCongregacao = 'http://localhost:8080/congregacoes/lista';
-  private urlListarCongregacoesPorNome = 'http://localhost:8080/secretaria/membro/listar'
+  private urlListarCongregacoesPorNome = 'http://localhost:8080/secretaria/membro/listar';
+  private urlRelatorioMembrosCongregacao = 'http://localhost:8080/secretaria/membro/cogregacao';
+  private urlRelatorioMembrosCampo = 'http://localhost:8080/secretaria/membro/campo';
+  private urlListaUsuarios = 'http://localhost:8080/usuario/listar';
   private router: Router;
 
   constructor(http: Http, router: Router) {
@@ -66,6 +70,24 @@ export class MembroService {
   public listarMembrosPorCongregacao(congregacao): Observable<Membros[]> {
     return this.http
       .get(this.urlListarCongregacoesPorNome + '/' + congregacao)
+      .map(res => res.json());
+  }
+
+  public relatorioMembrosCongregacoes(congregacao, situacao): Observable<number> {
+    return this.http
+      .get(this.urlRelatorioMembrosCongregacao + '/' + congregacao + '/' + situacao)
+      .map(res => res.json());
+  }
+
+  public relatorioMembrosCampo(situacao): Observable<number> {
+    return this.http
+      .get(this.urlRelatorioMembrosCampo + '/' + situacao)
+      .map(res => res.json());
+  }
+
+  public listarUsuarios(): Observable<Usuario[]> {
+    return this.http
+      .get(this.urlListaUsuarios)
       .map(res => res.json());
   }
 }

@@ -1,41 +1,45 @@
 <div style="width: 100%; text-align: center" *ngIf="this.globals.informacoesUsuarioLogado.permissao != 'SECRETARIO'">
-  <h5>
-    <strong>Resumo finançeiro do dia {{dataInicial}} ao dia {{dataAtual | date: 'dd/MM/yyyy'}}</strong>
-  </h5>
-</div>
 
-<div class="" style="width: 1000px; text-align: center" *ngIf="this.globals.informacoesUsuarioLogado.permissao != 'SECRETARIO'">
-  <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-    <use xlink:href="#piechart" mask="url(#piemask)" />
-    <text x="0.5" y="0.5" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle" dy="0.1">{{resumo.entradas | currency: 'BRL'}}
-    </text>
-  </svg>
-  <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-    <use xlink:href="#piechart" mask="url(#piemask)" />
-    <text x="0.5" y="0.5" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle" dy="0.1">{{resumo.saidas | currency: 'BRL'}}
-    </text>
-  </svg>
-  <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-    <use xlink:href="#piechart" mask="url(#piemask)" />
-    <text x="0.5" y="0.5" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle" dy="0.1">{{resumo.total | currency: 'BRL'}}
-    </text>
-  </svg>
-
-  <div style="width: 55%; margin: 0 auto">
-    <div style="float: left">
-      <b> Entradas </b>
+  <div class="demo-card-square mdl-card mdl-shadow--2dp tamanho-grafico">
+    <div class="mdl-card__title grafico mdl-card--expand">
+      <h2 class="mdl-card__title-text texto-grafico">Resumo finançeiro do dia {{dataInicial}} ao dia {{dataAtual | date: 'dd/MM/yyyy'}}</h2>
     </div>
+    <div class="mdl-card__supporting-text">
+      <div class="" style="width: 1000px; text-align: center" *ngIf="this.globals.informacoesUsuarioLogado.permissao != 'SECRETARIO'">
+        <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
+          <use xlink:href="#piechart" mask="url(#piemask)" />
+          <text x="0.5" y="0.5" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle" dy="0.1">{{resumo.entradas | currency: 'BRL'}}
+          </text>
+        </svg>
+        <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
+          <use xlink:href="#piechart" mask="url(#piemask)" />
+          <text x="0.5" y="0.5" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle" dy="0.1">{{resumo.saidas | currency: 'BRL'}}
+          </text>
+        </svg>
+        <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
+          <use xlink:href="#piechart" mask="url(#piemask)" />
+          <text x="0.5" y="0.5" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle" dy="0.1">{{resumo.total | currency: 'BRL'}}
+          </text>
+        </svg>
 
-    <div style="float: right">
-      <b> Total </b>
+        <div style="width: 55%; margin: 0 auto">
+          <div style="float: left">
+            <b> Entradas </b>
+          </div>
+
+          <div style="float: right">
+            <b> Total </b>
+          </div>
+
+          <div>
+            <b> Saidas </b>
+          </div>
+
+        </div>
+
+      </div>
     </div>
-
-    <div>
-      <b> Saidas </b>
-    </div>
-
   </div>
-
 </div>
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" style="position: fixed; left: -1000px; height: -1000px;">
@@ -87,12 +91,124 @@
 </svg>
 <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
-<!-- <div class="" style="text-align: center; display: inline-block">
-  <div>
-      <i class="material-icons">account_circle</i>
+<!-- Square card -->
+<style>
+  .demo-card-square.mdl-card {
+    width: 267px;
+    min-height: 150px;
+    display: -webkit-inline-box;
+  }
+
+  .tamanho-grafico {
+    width: 1080px !important;
+  }
+
+  .membros {
+    background: url('../assets/avatar.png') bottom right 15% no-repeat #46B6AC;
+  }
+
+  .congregacoes {
+    background: url('../assets/home.png') bottom right 15% no-repeat #46B6AC;
+  }
+
+  .grafico {
+    background: url('../assets/line-chart.png') bottom right 15% no-repeat #00b9d8;
+  }
+
+  .dizimistas {
+    background: url('../assets/donation.png') bottom right 15% no-repeat #46B6AC;
+  }
+
+  .usuarios {
+    background: url('../assets/user.png') bottom right 15% no-repeat #46B6AC;
+  }
+
+
+
+  .demo-card-square>.mdl-card__title {
+    color: #fff;
+    background-position: left;
+    background-position-x: right;
+    background-size: 60px;
+  }
+
+  .texto-grafico {
+    margin: 0 auto;
+  }
+</style>
+
+<div *ngIf="globals.informacoesUsuarioLogado.permissao != 'SECRETARIO' && globals.informacoesUsuarioLogado.permissao != 'TESOUREIRO'">
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title congregacoes mdl-card--expand">
+      <h2 class="mdl-card__title-text">Congregações</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      {{congregacoes.length}} Congregações cadastradas.
+    </div>
   </div>
-  <div>
-      <i class="material-icons">home</i>
+
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title membros mdl-card--expand">
+      <h2 class="mdl-card__title-text">Membros</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      {{membroCampo}} Membros ativos.
+    </div>
   </div>
-  
-</div> -->
+
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title dizimistas mdl-card--expand">
+      <h2 class="mdl-card__title-text">Dizimistas</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      {{relatorioEntradasCampo[0][1]}} Dizimistas cadastrados.
+    </div>
+  </div>
+
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title usuarios mdl-card--expand">
+      <h2 class="mdl-card__title-text">Usuários</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      {{usuarios.length}} Usuários cadastrados.
+    </div>
+  </div>
+</div>
+
+<div *ngIf="globals.informacoesUsuarioLogado.permissao == 'SECRETARIO' || globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO'">
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title congregacoes mdl-card--expand">
+      <h2 class="mdl-card__title-text">Congregação</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      {{globals.informacoesUsuarioLogado.congregacao}}
+    </div>
+  </div>
+
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title membros mdl-card--expand">
+      <h2 class="mdl-card__title-text">Membros Ativos</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      {{membroCongregacaoAtivo}} Membros ativos.
+    </div>
+  </div>
+
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title usuarios mdl-card--expand">
+      <h2 class="mdl-card__title-text">Membros Inativos</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      {{membroCongregacaoInativo}} Membros Inativos.
+    </div>
+  </div>
+
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title dizimistas mdl-card--expand">
+      <h2 class="mdl-card__title-text">Dizimistas</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      {{relatorioEntradasCongregacao[0][1]}} Dizimistas cadastrados.
+    </div>
+  </div>
+</div>
