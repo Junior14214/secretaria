@@ -5,5 +5,7 @@ export class Congregacoes {
     telefone: string;
     cnpj: string;
     cidade: string;
-    estado: string
+    estado: string;
+    situacao: string;
+    repasse?: string;
 }

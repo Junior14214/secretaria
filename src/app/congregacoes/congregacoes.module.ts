@@ -1,12 +1,10 @@
-import { CongregacoesModule } from './../congregacoes/congregacoes.module';
+import { CongregacoesService } from './congregacoes.service';
 import { AlertasModule } from './../alertas/alertas.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { MembroService } from './membro.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MembroComponent } from './membro.component';
-import { ListaComponent } from './lista.component';
+import { CongregacoesComponent } from './congregacoes.component';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -39,8 +37,8 @@ import {
   MatTableModule,
   MatTabsModule,
   MatToolbarModule,
-  MatTooltipModule,
-} from '@angular/material';
+  MatTooltipModule
+} from '../../../node_modules/@angular/material';
 
 @NgModule({
   imports: [
@@ -80,14 +78,12 @@ import {
     FormsModule,
     RouterModule,
     AlertasModule,
-    CongregacoesModule
   ],
-  
-  declarations: [ListaComponent],
-
-  providers: [MembroService],
-
+  declarations: [CongregacoesComponent],
+  providers: [CongregacoesService],
   exports: [
+    CongregacoesComponent,
+    CommonModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,
@@ -121,7 +117,8 @@ import {
     MatToolbarModule,
     MatTooltipModule,
     FormsModule,
-    AlertasModule
+    RouterModule,
+    AlertasModule,
   ]
 })
-export class MembroModule { }
+export class CongregacoesModule { }

@@ -171,4 +171,29 @@
 
   </mat-tab>
 
+  <mat-tab label="Lista de Congregações">
+
+    <div class="container">
+      <table class="mdl-data-table mdl-js-data-table" style="width: 70%">
+        <thead>
+          <tr>
+            <th class="mdl-data-table__cell--non-numeric">Congregação</th>
+            <th>Pastor Dirigente</th>
+            <th>Situação</th>
+            <th>Repasse</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of congregacoes">
+            <td>{{item.congregacao}}</td>
+            <td>{{item.dirigente}}</td>
+            <td>{{item.situacao}}</td>
+            <td>{{item.repasse}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </mat-tab>
+
 </mat-tab-group>

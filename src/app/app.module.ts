@@ -29,6 +29,7 @@ import { RequerimentosComponent } from './requerimentos/requerimentos.component'
 import { VisualizarMembroComponent } from './visualizar-membro/visualizar-membro.component';
 import { RelatorioGeralComponent } from './relatorio-geral/relatorio-geral.component';
 import { ContextualizarMembroComponent } from './contextualizar-membro/contextualizar-membro.component';
+import { CongregacoesModule } from './congregacoes/congregacoes.module';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBkVH-_4pVdyOqtLKh6KuD-38d_qwLvob4",
@@ -66,7 +67,8 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     UsuarioModule,
     RequerimentosModule,
-    RelatorioGeralModule
+    RelatorioGeralModule,
+    CongregacoesModule
 
   ],
   providers: [AuthGuard, Globals],

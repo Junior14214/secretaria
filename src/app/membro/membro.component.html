@@ -156,6 +156,12 @@
 
   </mat-tab>
 
+  <mat-tab label="Cadastro de Congregações" *ngIf="globals.informacoesUsuarioLogado.permissao == 'SECRETARIO_SEDE' || globals.informacoesUsuarioLogado.permissao == 'ADM' || globals.informacoesUsuarioLogado.permissao == 'MASTER'">
+
+    <app-congregacoes></app-congregacoes>
+
+  </mat-tab>
+
   <mat-tab label="Cadastro de Usuários" *ngIf="globals.informacoesUsuarioLogado.permissao == 'MASTER'">
 
     <app-usuario></app-usuario>

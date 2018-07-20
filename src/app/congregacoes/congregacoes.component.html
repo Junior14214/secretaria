@@ -1,0 +1,34 @@
+<app-alertas></app-alertas>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="congregacoes.congregacao" name="congregacao" placeholder="Nome">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="congregacoes.endereco" name="endereco" placeholder="Endereço">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="congregacoes.dirigente" name="dirigente" placeholder="Dirigente">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="congregacoes.telefone" name="telefone" placeholder="Telefone">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="congregacoes.cnpj" name="cnpj" placeholder="CNPJ">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="congregacoes.cidade" name="cidade" placeholder="Cidade">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="congregacoes.estado" name="estado" placeholder="Estado">
+  </mat-form-field>
+<br>
+
+<button (click)="salvar()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored botao">
+  Salvar
+</button>
