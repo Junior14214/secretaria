@@ -4,6 +4,7 @@ import { Dizimistas } from './../model/dizimista';
 import { Observable } from 'rxjs/observable';
 import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { FinanceiroMensal } from '../model/financeiro_mensal';
 
 @Injectable()
 export class RelatorioService {
@@ -14,6 +15,7 @@ export class RelatorioService {
   private urlRelatorioGeral: string = 'http://localhost:8080/secretaria/dizimista/total';
   private urlRelatorioGeralSede: string = 'http://localhost:8080/secretaria/repasseCongregacoes'
   private urlRelatorioFinanceiroDiario: string = 'http://localhost:8080/financeiro/diario'
+  private urlRelatorioFinanceiroMensal: string = 'http://localhost:8080/financeiro/mensal'
 
   constructor(http: Http) {
     this.http = http;
@@ -41,6 +43,12 @@ export class RelatorioService {
     return this.http
       .get(this.urlRelatorioFinanceiroDiario + '/' + congregacao)
       .map(res => res.json())
+  }
+
+  public relatorioFinanceiroMensal(congregacao): Observable<FinanceiroMensal> {
+    return this.http
+      .get(this.urlRelatorioFinanceiroMensal + '/' + congregacao)
+      .map(res => res.json());
   }
 
 

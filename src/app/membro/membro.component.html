@@ -93,7 +93,14 @@
               </mat-form-field>
 
               <mat-form-field>
-                <input matInput [(ngModel)]="membro.dirigente" name="dirigente" placeholder="Dirigente">
+                <mat-select [(ngModel)]="membro.dirigente" name="dirigente" placeholder="Dirigente">
+                  <mat-option value="Sim">
+                    Sim
+                  </mat-option>
+                  <mat-option value="Não">
+                    Não
+                  </mat-option>
+                </mat-select>
               </mat-form-field>
 
               <mat-form-field>

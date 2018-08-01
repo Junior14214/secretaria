@@ -1,4 +1,5 @@
 export class Congregacoes {
+    id: number;
     congregacao: string;
     endereco: string;
     dirigente: string;

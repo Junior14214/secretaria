@@ -289,10 +289,10 @@
             SALDO ANTERIOR
           </td>
           <td>
-            R$ 250,00
+            {{totalMesAnterior.total | currency: 'BRL'}}
           </td>
         </tr>
-<!--         <tr>
+        <!--         <tr>
           <td colspan="2">
             TOTAL
           </td>
@@ -313,7 +313,8 @@
             SALDO PARA O MÊS SEGUINTE
           </td>
           <td>
-            R$
+            {{(totalRepasseCongregacoes * 0.17) + valorTotalDizimos + valorTotalOfertas + valorTotalOfertasEspeciais + valorTotalOutros
+            + totalMesAnterior.total + valorTotalDespesas| currency: 'BRL'}}
           </td>
         </tr>
       </tbody>

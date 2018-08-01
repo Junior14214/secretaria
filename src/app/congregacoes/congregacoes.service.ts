@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '../../../node_modules/@angular/router';
 import { Response } from '@angular/http/src/static_response';
 import 'rxjs/add/operator/map';
+import { FinanceiroMensal } from '../model/financeiro_mensal';
 
 
 @Injectable()
@@ -13,6 +14,9 @@ export class CongregacoesService {
   private http: Http;
   private headers: Headers;
   private urlCadastro: string = 'http://localhost:8080/congregacoes/cadastrar';
+  private urlBuscarPorId: string = 'http://localhost:8080/congregacoes/buscar';
+  private urlExcluir: string = 'http://localhost:8080/congregacoes/excluir';
+  private urlCadastroRelatorioMensal: string = 'http://localhost:8080/financeiro/mensal';
   private router: Router;
 
   constructor(http: Http, router: Router) {
@@ -26,6 +30,25 @@ export class CongregacoesService {
 
     return this.http
       .post(this.urlCadastro, JSON.stringify(congregacao), { headers: this.headers });
+  }
+
+  public buscarPorId(id): Observable<Congregacoes> {
+    return this.http
+      .get(this.urlBuscarPorId + '/' + id)
+      .map(res => res.json());
+  }
+
+  public excluir(congregacoes: Congregacoes) {
+    return this.http
+      .delete(this.urlExcluir + '/' + congregacoes.id)
+  }
+
+  public cadastrarRelatorioMensal(relatorioMensal: FinanceiroMensal): Observable<Response> {
+    this.headers = new Headers();
+    this.headers.append('Content-Type', 'application/json');
+
+    return this.http
+      .post(this.urlCadastroRelatorioMensal, JSON.stringify(relatorioMensal), { headers: this.headers })
   }
 
 }

@@ -242,7 +242,7 @@
             SALDO DO MÊS ANTERIOR
           </td>
           <td>
-            -
+            {{totalMesAnterior.total | currency: 'BRL'}}
           </td>
         </tr>
         <tr>
@@ -253,7 +253,8 @@
             SALDO TOTAL
           </td>
           <td>
-            -
+            {{((totalDizimos + totalOfertas + totalOfertasEspeciais + totalOutros + totalMesAnterior.total + totalSaidas) - totalDizimos
+            * 0.17) | currency: 'BRL'}}
           </td>
         </tr>
 

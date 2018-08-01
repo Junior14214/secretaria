@@ -62,7 +62,7 @@
                 <mat-icon>delete</mat-icon>
                 <span>Excluir</span>
               </button>
-              <button mat-menu-item>
+              <button mat-menu-item  (click)="contextualizarMembro(item.id)">
                 <mat-icon>portrait</mat-icon>
                 <span>Visualizar</span>
               </button>
@@ -171,7 +171,7 @@
 
   </mat-tab>
 
-  <mat-tab label="Lista de Congregações">
+  <mat-tab label="Lista de Congregações" *ngIf="globals.informacoesUsuarioLogado.permissao != 'SECRETARIO' && globals.informacoesUsuarioLogado.permissao != 'TESOUREIRO' && globals.informacoesUsuarioLogado.permissao != 'DIRIGENTE'">
 
     <div class="container">
       <table class="mdl-data-table mdl-js-data-table" style="width: 70%">
@@ -181,6 +181,7 @@
             <th>Pastor Dirigente</th>
             <th>Situação</th>
             <th>Repasse</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -189,6 +190,26 @@
             <td>{{item.dirigente}}</td>
             <td>{{item.situacao}}</td>
             <td>{{item.repasse}}</td>
+            <td *ngIf="globals.informacoesUsuarioLogado.permissao == 'SECRETARIO_SEDE' || globals.informacoesUsuarioLogado.permissao == 'ADM' || globals.informacoesUsuarioLogado.permissao == 'MASTER'">
+              <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="editarCongregacao(item.id)">
+                  <mat-icon>create</mat-icon>
+                  <span>Editar Cadastro</span>
+                </button>
+                <button mat-menu-item (click)="excluirCongregacao(item)">
+                  <mat-icon>delete</mat-icon>
+                  <span>Excluir</span>
+                </button>
+              </mat-menu>
+            </td>
+            <td style="width: 10px" *ngIf="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE'">
+              <button mat-menu-item (click)="editarCongregacao(item.id)">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>

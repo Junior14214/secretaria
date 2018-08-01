@@ -1,3 +1,4 @@
+import { FinanceiroMensal } from './../model/financeiro_mensal';
 import { Congregacoes } from './../model/congregacoes';
 import { MembroService } from './../membro/membro.service';
 import { Globals } from './../globals';
@@ -33,6 +34,7 @@ export class DemonstrativoComponent implements OnInit {
   private totalOfertasEspeciais: number;
   private totalOutros: number;
   private totalSaidas: number;
+  private totalMesAnterior: FinanceiroMensal;
   private saida: Dizimistas[] = [];
   private globals: Globals;
   @Input() testeNaTela: string;
@@ -158,6 +160,15 @@ export class DemonstrativoComponent implements OnInit {
     if (this.saida.length == 0) {
       this.globals.abrirAlerta('warning', 'Não foram encontrados relatórios para o período selecionado!')
     }
+
+    this.saldoMesAnterior(this.congregacao);
+  }
+
+  public saldoMesAnterior(congregacao) {
+    this.service.relatorioFinanceiroMensal(congregacao)
+      .subscribe(res => {
+        this.totalMesAnterior = res;
+      })
   }
 
   public novoRelatorio() {

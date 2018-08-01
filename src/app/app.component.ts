@@ -1,3 +1,4 @@
+import { MembroService } from './membro/membro.service';
 import { UsuarioService } from './usuario/usuario.service';
 import { Router } from '@angular/router';
 import { Component, AfterContentChecked, Input } from '@angular/core';
@@ -5,7 +6,6 @@ import { Observable } from 'rxjs/observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Usuario } from './model/usuario';
-import { MembroComponent } from './membro/membro.component';
 import { Globals } from './globals';
 
 @Component({
@@ -21,10 +21,13 @@ export class AppComponent implements AfterContentChecked {
   verificaSessao;
   count: number = 0;
   contador = 0;
+  membroService: MembroService;
+  inadimplente: boolean = false;
 
-  constructor(public afAuth: AngularFireAuth, private route: Router, service: UsuarioService) {
+  constructor(public afAuth: AngularFireAuth, private route: Router, service: UsuarioService, membroService: MembroService) {
     this.user = afAuth.authState;
     this.service = service;
+    this.membroService = membroService;
 
   }
 
@@ -48,11 +51,20 @@ export class AppComponent implements AfterContentChecked {
             console.log(res);
           });
         this.count++;
+
+        this.membroService.listarCongregacoes()
+          .subscribe(res => {
+            res.forEach((item) => {
+              if (item.congregacao == this.usuario.congregacao && this.usuario.permissao == 'DIRIGENTE' && item.repasse == 'Inadimplente') {
+                this.inadimplente = true;
+              }
+            })
+          })
       }
-      if(this.contador === 0){
+      if (this.contador === 0) {
         this.route.navigate(['/home']);
         this.contador++;
+      }
     }
   }
-}
 }

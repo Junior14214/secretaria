@@ -225,4 +225,16 @@ html, body {
             align-items: center;
   }
 
+  .mdl-components__warning {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: rgb(247, 234, 123);
+    padding: 6px;
+    border-radius: 2px;
+    color: #212121;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    margin-top: 15px;
+}
   

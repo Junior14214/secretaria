@@ -587,7 +587,7 @@
     color: #8bc5e4;
   }
   .demo-chart:nth-child(4) {
-    color: #EF3C79;
+    color: #46b6ac;
   }
   .demo-graphs {
     padding: 16px 32px;
@@ -682,5 +682,52 @@
   .material-icons{
     font-size: 100px;
     color: #00bbd6;
+  }
+
+  .demo-card-square.mdl-card {
+    width: 267px;
+    min-height: 150px;
+    display: -webkit-inline-box;
+  }
+
+  .tamanho-grafico {
+    width: 1080px !important;
+  }
+
+  .membros {
+    background: url('/assets/avatar.png') bottom right 15% no-repeat #46B6AC;
+  }
+
+  .congregacoes {
+    background: url('/assets/home.png') bottom right 15% no-repeat #46B6AC;
+  }
+
+  .grafico {
+    background: url('/assets/line-chart.png') bottom right 15% no-repeat #00b9d8;
+  }
+
+  .dizimistas {
+    background: url('/assets/donation.png') bottom right 15% no-repeat #46B6AC;
+  }
+
+  .usuarios {
+    background: url('/assets/user.png') bottom right 15% no-repeat #46B6AC;
+  }
+
+
+
+  .demo-card-square>.mdl-card__title {
+    color: #fff;
+    background-position: left;
+    background-position-x: right;
+    background-size: 60px;
+  }
+
+  .texto-grafico {
+    margin: 0 auto;
+  }
+
+  .mdl-cell--3-col-desktop{
+  width: calc(25% - 38px);
   }
   

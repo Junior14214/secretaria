@@ -30,6 +30,7 @@ export class HomeComponent implements AfterContentChecked {
   membroCampo: number = 0;
   congregacoes: Congregacoes[];
   usuarios: Usuario[];
+  inadimplente: boolean = false;
 
   constructor(service: RelatorioService, globals: Globals, dizimistaService: DizimistaService, membroService: MembroService) {
     this.service = service;
@@ -85,6 +86,16 @@ export class HomeComponent implements AfterContentChecked {
         .subscribe(res => {
           this.membroCongregacaoInativo = res;
         });
+
+/*       this.membroService.listarCongregacoes()
+        .subscribe(res => {
+          this.congregacoes = res;
+          this.congregacoes.forEach((item) => {
+            if (item.congregacao === this.globals.informacoesUsuarioLogado.congregacao && this.globals.informacoesUsuarioLogado.permissao == 'DIRIGENTE' && item.repasse == 'Inadimplente') {
+              this.inadimplente = true;
+            }
+          })
+        }) */
     }
 
 

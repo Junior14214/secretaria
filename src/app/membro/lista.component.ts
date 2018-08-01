@@ -1,7 +1,8 @@
+import { CongregacoesService } from './../congregacoes/congregacoes.service';
 import { Congregacoes } from './../model/congregacoes';
 import { Globals } from './../globals';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Membros } from './../model/membro';
 import { MembroService } from './membro.service';
 import { Component, AfterContentChecked, ViewChild } from '@angular/core';
@@ -18,6 +19,7 @@ export class ListaComponent implements AfterContentChecked {
   dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
   membro: Membros[] = [];
   service: MembroService;
+  congregacaoService: CongregacoesService;
   router: Router;
   globals: Globals;
   validador = true;
@@ -32,16 +34,21 @@ export class ListaComponent implements AfterContentChecked {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(service: MembroService, router: Router, globals: Globals) {
+  constructor(service: MembroService, router: Router, globals: Globals, congregacaoService: CongregacoesService) {
     this.service = service;
     this.router = router;
     this.globals = globals;
+    this.congregacaoService = congregacaoService;
 
-    service.listarCongregacoes()
+    this.service.listarCongregacoes()
       .subscribe(res => {
         this.congregacoes = res;
       });
 
+  }
+
+  public editarCongregacao(id) {
+    this.router.navigate(['/lista/' + id])
   }
 
   public teste(congregacao) {
@@ -76,6 +83,16 @@ export class ListaComponent implements AfterContentChecked {
         this.globals.abrirAlerta('error', 'Não foi possível excluir o membro ' + error);
       })
 
+  }
+
+  public excluirCongregacao(congregacoes) {
+    this.congregacaoService.excluir(congregacoes)
+      .subscribe(res => {
+        let nova_lista = this.congregacoes.slice(0);
+        let indice = nova_lista.indexOf(congregacoes);
+        nova_lista.splice(indice, 1);
+        this.congregacoes = nova_lista;
+      })
   }
 
   ngAfterContentChecked() {

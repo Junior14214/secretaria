@@ -5,6 +5,7 @@ import { RelatorioService } from '../relatorio/relatorio.service';
 import * as jsPDF from 'jspdf';
 import * as html2canvas from "html2canvas";
 import * as html2pdf from 'html2pdf.js';
+import { FinanceiroMensal } from '../model/financeiro_mensal';
 
 @Component({
   selector: 'app-relatorio-geral',
@@ -29,6 +30,7 @@ export class RelatorioGeralComponent implements OnInit {
   private valorTotalOutros: number;
   private valorTotalDespesas: number;
   private totalRepasseCongregacoes: number;
+  private totalMesAnterior: FinanceiroMensal;
   private listaSaidas: Dizimistas[] = [];
 
   constructor(service: RelatorioService, globals: Globals) {
@@ -108,8 +110,14 @@ export class RelatorioGeralComponent implements OnInit {
 
         let total = 0;
 
-        this.repasse_congregacoes.forEach(function (item) {
-          total += item[1];
+        if (this.repasse_congregacoes.length == 0) {
+          this.globals.abrirAlerta('warning', 'Não foram encontrados relatórios para o período selecionado!')
+        }
+
+        this.repasse_congregacoes.forEach((item) => {
+          if (item[0] != this.globals.informacoesUsuarioLogado.congregacao) {
+            total += item[1];
+          }
         })
 
         this.totalRepasseCongregacoes = total;
@@ -165,9 +173,14 @@ export class RelatorioGeralComponent implements OnInit {
         this.valorTotalDespesas = res;
       })
 
-    if (this.repasse_congregacoes.length == 0) {
-      this.globals.abrirAlerta('warning', 'Não foram encontrados relatórios para o período selecionado!')
-    }
+    this.saldoMesAnterior(congregacao);
+  }
+
+  public saldoMesAnterior(congregacao) {
+    this.service.relatorioFinanceiroMensal(congregacao)
+      .subscribe(res => {
+        this.totalMesAnterior = res;
+      });
   }
 
   public novoRelatorio() {
