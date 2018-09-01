@@ -13,12 +13,12 @@ export class MembroService {
 
   private http: Http;
   private headers: Headers;
-  private url: string = 'http://localhost:8080/secretaria/membro';
-  private urlCongregacao = 'http://localhost:8080/congregacoes/lista';
-  private urlListarCongregacoesPorNome = 'http://localhost:8080/secretaria/membro/listar';
-  private urlRelatorioMembrosCongregacao = 'http://localhost:8080/secretaria/membro/cogregacao';
-  private urlRelatorioMembrosCampo = 'http://localhost:8080/secretaria/membro/campo';
-  private urlListaUsuarios = 'http://localhost:8080/usuario/listar';
+  private url: string = 'http://www.secretariaonlineadmco.com.br//secretaria/membro';
+  private urlCongregacao = 'http://www.secretariaonlineadmco.com.br//congregacoes/lista';
+  private urlListarCongregacoesPorNome = 'http://www.secretariaonlineadmco.com.br//secretaria/membro/listar';
+  private urlRelatorioMembrosCongregacao = 'http://www.secretariaonlineadmco.com.br//secretaria/membro/cogregacao';
+  private urlRelatorioMembrosCampo = 'http://www.secretariaonlineadmco.com.br//secretaria/membro/campo';
+  private urlListaUsuarios = 'http://www.secretariaonlineadmco.com.br//usuario/listar';
   private router: Router;
 
   constructor(http: Http, router: Router) {

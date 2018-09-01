@@ -10,9 +10,9 @@ export class DizimistaService {
 
   private http: Http;
   private headers: Headers;
-  private url: string = 'http://localhost:8080/secretaria/dizimista';
-  private urlRelatorioCongregacao = 'http://localhost:8080/secretaria/relatorio/congregacao';
-  private urlRelatorioCampo = 'http://localhost:8080/secretaria/relatorio/campo';
+  private url: string = 'http://www.secretariaonlineadmco.com.br//secretaria/dizimista';
+  private urlRelatorioCongregacao = 'http://www.secretariaonlineadmco.com.br//secretaria/relatorio/congregacao';
+  private urlRelatorioCampo = 'http://www.secretariaonlineadmco.com.br//secretaria/relatorio/campo';
 
 
   constructor(http: Http) {

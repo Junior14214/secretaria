@@ -7,6 +7,7 @@ import { Globals } from './../globals';
 import { RelatorioService } from './../relatorio/relatorio.service';
 import { Component, OnInit, AfterContentInit, AfterViewInit, OnChanges, AfterContentChecked } from '@angular/core';
 import * as firebase from 'firebase/app';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-home',
@@ -31,6 +32,7 @@ export class HomeComponent implements AfterContentChecked {
   congregacoes: Congregacoes[];
   usuarios: Usuario[];
   inadimplente: boolean = false;
+  chart = [];
 
   constructor(service: RelatorioService, globals: Globals, dizimistaService: DizimistaService, membroService: MembroService) {
     this.service = service;
@@ -39,6 +41,8 @@ export class HomeComponent implements AfterContentChecked {
     this.globals = globals;
     let mes: number = this.dataAtual.getMonth() + 1
     this.dataInicial = (mes < 10) ? '01' + '/' + '0' + mes + '/' + this.dataAtual.getFullYear() : '01' + '/' + mes + '/' + this.dataAtual.getFullYear();
+
+    Chart.defaults.global.legend.display = false;
 
     this.membroService.relatorioMembrosCampo('Ativo')
       .subscribe(res => {
@@ -60,15 +64,41 @@ export class HomeComponent implements AfterContentChecked {
         this.usuarios = res;
       });
 
-
   }
 
   ngAfterContentChecked() {
 
     if (this.globals.informacoesUsuarioLogado.congregacao != null && this.contador == 0) {
+
       this.service.relatorioFinanceiroDiario(this.globals.informacoesUsuarioLogado.congregacao)
         .subscribe(res => {
           this.resumo = res;
+
+          this.chart = new Chart('canvas', {
+            type: 'bar',
+            data: {
+              labels: ["Entradas", "Saídas", "Saldo Anterior", "Total"],
+              datasets: [{
+                label: 'R$: ',
+                data: [this.resumo.entradas, this.resumo.saidas, this.resumo.saldo_alterior, this.resumo.total + this.resumo.saldo_alterior],
+                backgroundColor: [
+                  "rgb(255, 99, 132)",
+                  "rgb(54, 162, 235)",
+                  "rgb(255, 205, 86)",
+                  "rgb(70, 182, 172)"
+                ]
+              }]
+            },
+            options: {
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: true
+                  }
+                }]
+              }
+            }
+          })
         })
       this.contador++;
 
@@ -87,15 +117,15 @@ export class HomeComponent implements AfterContentChecked {
           this.membroCongregacaoInativo = res;
         });
 
-/*       this.membroService.listarCongregacoes()
-        .subscribe(res => {
-          this.congregacoes = res;
-          this.congregacoes.forEach((item) => {
-            if (item.congregacao === this.globals.informacoesUsuarioLogado.congregacao && this.globals.informacoesUsuarioLogado.permissao == 'DIRIGENTE' && item.repasse == 'Inadimplente') {
-              this.inadimplente = true;
-            }
-          })
-        }) */
+      /*       this.membroService.listarCongregacoes()
+              .subscribe(res => {
+                this.congregacoes = res;
+                this.congregacoes.forEach((item) => {
+                  if (item.congregacao === this.globals.informacoesUsuarioLogado.congregacao && this.globals.informacoesUsuarioLogado.permissao == 'DIRIGENTE' && item.repasse == 'Inadimplente') {
+                    this.inadimplente = true;
+                  }
+                })
+              }) */
     }
 
 

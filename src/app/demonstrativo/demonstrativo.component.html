@@ -180,13 +180,13 @@
       </tbody>
     </table>
 
-    <div class="divLabel">
+    <div class="divLabel" *ngIf="fimDeMes">
       <label>
         <b>DEMONSTRATIVO DA MOVIMENTAÇÃO FINANÇEIRA</b>
       </label>
     </div>
 
-    <table style="margin-left: 100px" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp tabela">
+    <table style="margin-left: 100px" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp tabela" *ngIf="fimDeMes">
       <thead>
         <tr>
           <th>
@@ -267,7 +267,10 @@
       <b>{{dataRelatorio1}}</b> a
       <b>{{dataRelatorio2}}</b>
       <br>
-      <table style="width: 800px">
+      <div *ngIf="!fimDeMes">
+        <b style="color: #f17777">Este relatório é apenas para conferência de valores. O demonstrativo será gerado no fim do mês atual</b>
+      </div>
+      <table style="width: 800px" *ngIf="fimDeMes">
         <tr>
           <td>
             <hr style="margin-bottom: -10px">

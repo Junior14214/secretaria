@@ -11,11 +11,11 @@ export class RelatorioService {
 
   private http: Http;
   private headers: Headers;
-  private urlRelatorio: string = 'http://localhost:8080/secretaria/dizimista';
-  private urlRelatorioGeral: string = 'http://localhost:8080/secretaria/dizimista/total';
-  private urlRelatorioGeralSede: string = 'http://localhost:8080/secretaria/repasseCongregacoes'
-  private urlRelatorioFinanceiroDiario: string = 'http://localhost:8080/financeiro/diario'
-  private urlRelatorioFinanceiroMensal: string = 'http://localhost:8080/financeiro/mensal'
+  private urlRelatorio: string = 'http://www.secretariaonlineadmco.com.br//secretaria/dizimista';
+  private urlRelatorioGeral: string = 'http://www.secretariaonlineadmco.com.br//secretaria/dizimista/total';
+  private urlRelatorioGeralSede: string = 'http://www.secretariaonlineadmco.com.br//secretaria/repasseCongregacoes'
+  private urlRelatorioFinanceiroDiario: string = 'http://www.secretariaonlineadmco.com.br//financeiro/diario'
+  private urlRelatorioFinanceiroMensal: string = 'http://www.secretariaonlineadmco.com.br//financeiro/mensal'
 
   constructor(http: Http) {
     this.http = http;

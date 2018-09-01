@@ -20,9 +20,9 @@ export class DemonstrativoComponent implements OnInit {
   private congregacoes: Congregacoes[];
   meses = new Array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto",
     "Setembro", "Outubro", "Novembro", "Dezembro");
-  mesAtual: string;
-  data1 = new Date();
-  data2 = new Date();
+  private mesAtual: string;
+  private data1 = new Date();
+  private data2 = new Date();
   private dataFormatada1: string;
   private dataFormatada2: string;
   private dataRelatorio1: string;
@@ -37,9 +37,11 @@ export class DemonstrativoComponent implements OnInit {
   private totalMesAnterior: FinanceiroMensal;
   private saida: Dizimistas[] = [];
   private globals: Globals;
+  private fimDeMes: boolean = false;
   @Input() testeNaTela: string;
 
   constructor(service: RelatorioService, globals: Globals, membroService: MembroService) {
+
     this.service = service;
     this.globals = globals;
     this.congregacao = this.globals.informacoesUsuarioLogado.congregacao;
@@ -104,6 +106,15 @@ export class DemonstrativoComponent implements OnInit {
       .subscribe(res => {
         this.totalDizimos = res;
       })
+
+    let date = new Date();
+    let ultimoDiaMesAtual = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    let ultimoDiaMesAnterior = new Date(date.getFullYear(), date.getMonth(), 0);
+
+    if (this.dataFormatada1.substring(5, 6) == (date.getMonth() + 1).toString() && this.dataFormatada2.substring(5, 6) == (date.getMonth() + 1).toString() && ultimoDiaMesAtual.getDate() == date.getDate()
+  || parseInt(this.dataFormatada1.substring(5, 6))-1 == date.getMonth() && parseInt(this.dataFormatada2.substring(5, 6))-1 == date.getMonth() && this.dataFormatada2.substring(6, 8) == ultimoDiaMesAnterior.getDate().toString() && date.getDate() <= 5) {
+      this.fimDeMes = true;
+    };
 
     this.totalGeralOfertas(2, this.dataFormatada1, this.dataFormatada2);
   }

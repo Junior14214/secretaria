@@ -1,158 +1,163 @@
 <app-alertas></app-alertas>
 
-<form class="formulario">
-  <div class="inputs">
-    <mat-form-field>
-      <mat-select [(ngModel)]="dizimista.tipo" name="tipo" placeholder="Tipo de entrada">
-        <mat-option value="1">
-          Dizimo
-        </mat-option>
-        <mat-option value="2">
-          Oferta
-        </mat-option>
-        <mat-option value="3">
-          Oferta Especial
-        </mat-option>
-        <mat-option value="4">
-          Outros
-        </mat-option>
-        <mat-option value="5">
-          Saídas
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="dizimista.nome" name="nome" placeholder="Nome/Descrição">
-    </mat-form-field>
-
-    <mat-form-field *ngIf="dizimista.tipo == 1">
-      <mat-select [(ngModel)]="dizimista.tipo_membro" name="tipo" placeholder="Tipo de dizimista">
-        <mat-option value="Membro">
-          Membro
-        </mat-option>
-        <mat-option value="Obreiro">
-          Obreiro
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="dizimista.valor" name="valor" placeholder="Valor">
-    </mat-form-field>
-    <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored myButton" (click)="addInput(dizimista)">
-      <i class="material-icons">add</i>
+<div class="div-form">
+  <header class="header-form">
+Cadastro de Entradas/Saídas
+  </header>
+  <form class="formulario">
+    <div class="inputs">
+      <mat-form-field>
+        <mat-select [(ngModel)]="dizimista.tipo" name="tipo" placeholder="Tipo de entrada">
+          <mat-option value="1">
+            Dizimo
+          </mat-option>
+          <mat-option value="2">
+            Oferta
+          </mat-option>
+          <mat-option value="3">
+            Oferta Especial
+          </mat-option>
+          <mat-option value="4">
+            Outros
+          </mat-option>
+          <mat-option value="5">
+            Saídas
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="dizimista.nome" name="nome" placeholder="Nome/Descrição">
+      </mat-form-field>
+  
+      <mat-form-field *ngIf="dizimista.tipo == 1">
+        <mat-select [(ngModel)]="dizimista.tipo_membro" name="tipo" placeholder="Tipo de dizimista">
+          <mat-option value="Membro">
+            Membro
+          </mat-option>
+          <mat-option value="Obreiro">
+            Obreiro
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="dizimista.valor" name="valor" placeholder="Valor">
+      </mat-form-field>
+      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored myButton" (click)="addInput(dizimista)">
+        <i class="material-icons">add</i>
+      </button>
+    </div>
+    <div class="example-container lista">
+  
+      <!-- <mat-form-field>
+        <input matInput [(ngModel)]="membro.mae" name="mae" placeholder="Mãe">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="membro.sexo" name="sexo" placeholder="Sexo">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="membro.data_de_nascimento" name="data_de_nascimento" placeholder="Data de Nascimento">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="membro.profissao" name="profissao" placeholder="Profissão">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="membro.telefone" name="telefone" placeholder="Telefone">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="membro.rg" name="rg" placeholder="RG">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="membro.cpf" name="cpf" placeholder="CPF">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="membro.pais" name="pais" placeholder="País">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="membro.naturalidade" name="naturalidade" placeholder="Naturalidade">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="membro.estado_civil" name="estado_civil" placeholder="Estado Civil">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="membro.endereco" name="endereco" placeholder="Endereço">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="membro.bairro" name="bairro" placeholder="Bairro">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="membro.cidade" name="cidade" placeholder="Cidade">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="membro.cep" name="cep" placeholder="CEP">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="membro.batismo_nas_aguas" name="batismo_nas_aguas" placeholder="Batismo nas Águas">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="membro.batismo_no_espirito_santo" name="batismo_no_espirito_santo" placeholder="Batismo no Espírito Santo">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="membro.data_de_inicio" name="data_de_inicio" placeholder="Data de Inicio">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="membro.dirigente" name="dirigente" placeholder="Dirigente">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="membro.cargo" name="cargo" placeholder="Cargo">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput [(ngModel)]="membro.congregacao" name="congregacao" placeholder="Congregação">
+      </mat-form-field>
+  
+      <br>
+  
+      <mat-form-field class="textArea">
+        <textarea matInput [(ngModel)]="membro.observacao" name="observacao" placeholder="Observação"></textarea>
+      </mat-form-field> -->
+      <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp tabela">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of lista">
+            <td class="mdl-data-table__cell--non-numeric">{{item.nome}}</td>
+            <td>{{item.valor | currency:'BRL'}}</td>
+            <td>
+              <button class="mdl-button mdl-js-button" (click)="removeLinha(item)">
+                <i class="material-icons">clear</i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+    </div>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored botao" (click)="salvarValores()">
+      Salvar
     </button>
-  </div>
-  <div class="example-container lista">
-
-    <!-- <mat-form-field>
-      <input matInput [(ngModel)]="membro.mae" name="mae" placeholder="Mãe">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="membro.sexo" name="sexo" placeholder="Sexo">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="membro.data_de_nascimento" name="data_de_nascimento" placeholder="Data de Nascimento">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="membro.profissao" name="profissao" placeholder="Profissão">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="membro.telefone" name="telefone" placeholder="Telefone">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="membro.rg" name="rg" placeholder="RG">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="membro.cpf" name="cpf" placeholder="CPF">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="membro.pais" name="pais" placeholder="País">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="membro.naturalidade" name="naturalidade" placeholder="Naturalidade">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="membro.estado_civil" name="estado_civil" placeholder="Estado Civil">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="membro.endereco" name="endereco" placeholder="Endereço">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="membro.bairro" name="bairro" placeholder="Bairro">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="membro.cidade" name="cidade" placeholder="Cidade">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="membro.cep" name="cep" placeholder="CEP">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="membro.batismo_nas_aguas" name="batismo_nas_aguas" placeholder="Batismo nas Águas">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="membro.batismo_no_espirito_santo" name="batismo_no_espirito_santo" placeholder="Batismo no Espírito Santo">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="membro.data_de_inicio" name="data_de_inicio" placeholder="Data de Inicio">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="membro.dirigente" name="dirigente" placeholder="Dirigente">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="membro.cargo" name="cargo" placeholder="Cargo">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [(ngModel)]="membro.congregacao" name="congregacao" placeholder="Congregação">
-    </mat-form-field>
-
-    <br>
-
-    <mat-form-field class="textArea">
-      <textarea matInput [(ngModel)]="membro.observacao" name="observacao" placeholder="Observação"></textarea>
-    </mat-form-field> -->
-    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp tabela">
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Valor</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of lista">
-          <td class="mdl-data-table__cell--non-numeric">{{item.nome}}</td>
-          <td>{{item.valor | currency:'BRL'}}</td>
-          <td>
-            <button class="mdl-button mdl-js-button" (click)="removeLinha(item)">
-              <i class="material-icons">clear</i>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-  </div>
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored botao" (click)="salvarValores()">
-    Salvar
-  </button>
-</form>
+  </form>
+</div>

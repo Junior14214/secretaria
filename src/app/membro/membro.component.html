@@ -1,160 +1,166 @@
 <mat-tab-group>
   <mat-tab label="Cadastro de Membros">
 
-    <form (submit)="salvar($event)" class="formulario">
-      <div class="example-container">
+      <app-alertas></app-alertas>
 
-        <app-alertas></app-alertas>
+    <div class="div-form">
+      <header class="header-form">
+        Cadastrar Membros
+      </header>
+      <form (submit)="salvar($event)" class="formulario">
+        <div class="example-container">
 
-        <table>
-          <tr>
-            <td style="padding-right: 10px; width: 180px">
-              <img src="{{base64textString}}" width="180" height="250" *ngIf="base64textString" style="padding-bottom: 10px">
-              <img src="{{membro.foto}}" *ngIf="membro.foto && !base64textString" width="180" height="250" style="padding-bottom: 10px">
-              <br>
-              <label for='selecao-arquivo'>Selecionar Foto</label>
-              <input id='selecao-arquivo' type='file' (change)="handleFileSelect($event)">
-            </td>
-            <td>
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.nome" name="nome" placeholder="Nome">
-              </mat-form-field>
+          <table>
+            <tr>
+              <td style="padding-right: 10px; width: 180px">
+                <img src="{{base64textString}}" width="180" height="250" *ngIf="base64textString" style="padding-bottom: 10px">
+                <img src="{{membro.foto}}" *ngIf="membro.foto && !base64textString" width="180" height="250" style="padding-bottom: 10px">
+                <br>
+                <label for='selecao-arquivo'>Selecionar Foto</label>
+                <input id='selecao-arquivo' type='file' (change)="handleFileSelect($event)">
+              </td>
+              <td>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.nome" name="nome" placeholder="Nome">
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.pai" name="pai" placeholder="Pai">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.pai" name="pai" placeholder="Pai">
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.mae" name="mae" placeholder="Mãe">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.mae" name="mae" placeholder="Mãe">
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.sexo" name="sexo" placeholder="Sexo">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.sexo" name="sexo" placeholder="Sexo">
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.data_de_nascimento" name="data_de_nascimento" placeholder="Data de Nascimento">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.data_de_nascimento" name="data_de_nascimento" placeholder="Data de Nascimento">
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.profissao" name="profissao" placeholder="Profissão">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.profissao" name="profissao" placeholder="Profissão">
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.telefone" name="telefone" placeholder="Telefone">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.telefone" name="telefone" placeholder="Telefone">
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.rg" name="rg" placeholder="RG">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.rg" name="rg" placeholder="RG">
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.cpf" name="cpf" placeholder="CPF">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.cpf" name="cpf" placeholder="CPF">
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.pais" name="pais" placeholder="País">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.pais" name="pais" placeholder="País">
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.naturalidade" name="naturalidade" placeholder="Naturalidade">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.naturalidade" name="naturalidade" placeholder="Naturalidade">
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.estado_civil" name="estado_civil" placeholder="Estado Civil">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.estado_civil" name="estado_civil" placeholder="Estado Civil">
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.endereco" name="endereco" placeholder="Endereço">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.endereco" name="endereco" placeholder="Endereço">
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.bairro" name="bairro" placeholder="Bairro">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.bairro" name="bairro" placeholder="Bairro">
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.cidade" name="cidade" placeholder="Cidade">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.cidade" name="cidade" placeholder="Cidade">
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.cep" name="cep" placeholder="CEP">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.cep" name="cep" placeholder="CEP">
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.batismo_nas_aguas" name="batismo_nas_aguas" placeholder="Batismo nas Águas">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.batismo_nas_aguas" name="batismo_nas_aguas" placeholder="Batismo nas Águas">
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.batismo_no_espirito_santo" name="batismo_no_espirito_santo" placeholder="Batismo no Espírito Santo">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.batismo_no_espirito_santo" name="batismo_no_espirito_santo"
+                    placeholder="Batismo no Espírito Santo">
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.data_de_inicio" name="data_de_inicio" placeholder="Data de Inicio">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.data_de_inicio" name="data_de_inicio" placeholder="Data de Inicio">
+                </mat-form-field>
 
-              <mat-form-field>
-                <mat-select [(ngModel)]="membro.dirigente" name="dirigente" placeholder="Dirigente">
-                  <mat-option value="Sim">
-                    Sim
-                  </mat-option>
-                  <mat-option value="Não">
-                    Não
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
+                <mat-form-field>
+                  <mat-select [(ngModel)]="membro.dirigente" name="dirigente" placeholder="Dirigente">
+                    <mat-option value="Sim">
+                      Sim
+                    </mat-option>
+                    <mat-option value="Não">
+                      Não
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.cargo" name="cargo" placeholder="Cargo">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.cargo" name="cargo" placeholder="Cargo">
+                </mat-form-field>
 
-              <mat-form-field>
-                <mat-select [(ngModel)]="membro.congregacao" name="congregacao" placeholder="Congregação">
-                  <mat-option *ngFor="let item of listaCongregacoes" value="{{item.congregacao}}">
-                    {{item.congregacao}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
+                <mat-form-field>
+                  <mat-select [(ngModel)]="membro.congregacao" name="congregacao" placeholder="Congregação">
+                    <mat-option *ngFor="let item of listaCongregacoes" value="{{item.congregacao}}">
+                      {{item.congregacao}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
 
-              <mat-form-field *ngIf="globals.informacoesUsuarioLogado.permissao == 'SECRETARIO_SEDE'">
-                <mat-select [(ngModel)]="membro.situacao" name="situacao" placeholder="Situação">
-                  <mat-option value="Pre Cadastro">
-                    Pré cadastro
-                  </mat-option>
-                  <mat-option value="Ativo">
-                    Ativo
-                  </mat-option>
-                  <mat-option value="Inativo">
-                    Inativo
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
+                <mat-form-field *ngIf="globals.informacoesUsuarioLogado.permissao == 'SECRETARIO_SEDE'">
+                  <mat-select [(ngModel)]="membro.situacao" name="situacao" placeholder="Situação">
+                    <mat-option value="Pre Cadastro">
+                      Pré cadastro
+                    </mat-option>
+                    <mat-option value="Ativo">
+                      Ativo
+                    </mat-option>
+                    <mat-option value="Inativo">
+                      Inativo
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
 
-              <mat-form-field *ngIf="globals.informacoesUsuarioLogado.permissao == 'SECRETARIO_SEDE'">
-                <input matInput [(ngModel)]="membro.rol" name="rol" placeholder="N° de Rol">
-              </mat-form-field>
+                <mat-form-field *ngIf="globals.informacoesUsuarioLogado.permissao == 'SECRETARIO_SEDE'">
+                  <input matInput [(ngModel)]="membro.rol" name="rol" placeholder="N° de Rol">
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.conjuje" name="conjuje" placeholder="Nome do Conjuje">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.conjuje" name="conjuje" placeholder="Nome do Conjuje">
+                </mat-form-field>
 
-              <mat-form-field>
-                <input matInput [(ngModel)]="membro.nascimento_conjuje" name="nascimento_conjuje" placeholder="Nascimento do Conjuje">
-              </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="membro.nascimento_conjuje" name="nascimento_conjuje" placeholder="Nascimento do Conjuje">
+                </mat-form-field>
 
-              <br>
+                <br>
 
-              <mat-form-field class="textArea">
-                <textarea matInput [(ngModel)]="membro.observacao" name="observacao" placeholder="Observação"></textarea>
-              </mat-form-field>
-            </td>
-          </tr>
-        </table>
+                <mat-form-field class="textArea">
+                  <textarea matInput [(ngModel)]="membro.observacao" name="observacao" placeholder="Observação"></textarea>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
 
-      </div>
-      <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored botao">
-        Salvar
-      </button>
-    </form>
+        </div>
+        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored botao">
+          Salvar
+        </button>
+      </form>
+    </div>
 
   </mat-tab>
   <mat-tab label="Cadastro de Entradas" *ngIf="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO' || globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE' || globals.informacoesUsuarioLogado.permissao == 'ADM' || globals.informacoesUsuarioLogado.permissao == 'MASTER' || globals.informacoesUsuarioLogado.permissao == 'DIRIGENTE'">

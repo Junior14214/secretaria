@@ -1,46 +1,63 @@
 <app-alertas></app-alertas>
 
-<mat-form-field>
-  <input matInput [disabled]="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE'" [(ngModel)]="congregacoes.congregacao" name="congregacao" placeholder="Nome">
-</mat-form-field>
+<div class="div-form">
+  <header class="header-form">
+    Cadastrar Congregações
+  </header>
 
-<mat-form-field>
-  <input matInput [disabled]="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE'" [(ngModel)]="congregacoes.endereco" name="endereco" placeholder="Endereço">
-</mat-form-field>
+  <div style="margin-left: 93px">
+    <mat-form-field>
+      <input matInput [disabled]="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE'" [(ngModel)]="congregacoes.congregacao"
+        name="congregacao" placeholder="Nome">
+    </mat-form-field>
 
-<mat-form-field>
-  <input matInput [disabled]="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE'" [(ngModel)]="congregacoes.dirigente" name="dirigente" placeholder="Dirigente">
-</mat-form-field>
+    <mat-form-field>
+      <input matInput [disabled]="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE'" [(ngModel)]="congregacoes.endereco"
+        name="endereco" placeholder="Endereço">
+    </mat-form-field>
 
-<mat-form-field>
-  <input matInput [disabled]="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE'" [(ngModel)]="congregacoes.telefone" name="telefone" placeholder="Telefone">
-</mat-form-field>
+    <mat-form-field>
+      <input matInput [disabled]="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE'" [(ngModel)]="congregacoes.dirigente"
+        name="dirigente" placeholder="Dirigente">
+    </mat-form-field>
 
-<mat-form-field>
-  <input matInput [disabled]="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE'" [(ngModel)]="congregacoes.cnpj" name="cnpj" placeholder="CNPJ">
-</mat-form-field>
+    <mat-form-field>
+      <input matInput [disabled]="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE'" [(ngModel)]="congregacoes.telefone"
+        name="telefone" placeholder="Telefone">
+    </mat-form-field>
 
-<mat-form-field>
-  <input matInput [disabled]="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE'" [(ngModel)]="congregacoes.cidade" name="cidade" placeholder="Cidade">
-</mat-form-field>
+    <mat-form-field>
+      <input matInput [disabled]="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE'" [(ngModel)]="congregacoes.cnpj"
+        name="cnpj" placeholder="CNPJ">
+    </mat-form-field>
 
-<mat-form-field>
-  <input matInput [disabled]="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE'" [(ngModel)]="congregacoes.estado" name="estado" placeholder="Estado">
-</mat-form-field>
+    <mat-form-field>
+      <input matInput [disabled]="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE'" [(ngModel)]="congregacoes.cidade"
+        name="cidade" placeholder="Cidade">
+    </mat-form-field>
 
-<mat-form-field *ngIf="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE' || globals.informacoesUsuarioLogado.permissao == 'ADM' || globals.informacoesUsuarioLogado.permissao == 'MASTER'">
-  <mat-select [(ngModel)]="congregacoes.repasse" name="repasse" placeholder="Repasse">
-    <mat-option value="Em dias">
-      Em dias
-    </mat-option>
-    <mat-option value="Inadimplente">
-      Inadimplente
-    </mat-option>
-    <mat-option value="Isento">
-      Isento
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+    <mat-form-field>
+      <input matInput [disabled]="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE'" [(ngModel)]="congregacoes.estado"
+        name="estado" placeholder="Estado">
+    </mat-form-field>
+
+    <mat-form-field *ngIf="globals.informacoesUsuarioLogado.permissao == 'TESOUREIRO_SEDE' || globals.informacoesUsuarioLogado.permissao == 'ADM' || globals.informacoesUsuarioLogado.permissao == 'MASTER'">
+      <mat-select [(ngModel)]="congregacoes.repasse" name="repasse" placeholder="Repasse">
+        <mat-option value="Em dias">
+          Em dias
+        </mat-option>
+        <mat-option value="Inadimplente">
+          Inadimplente
+        </mat-option>
+        <mat-option value="Isento">
+          Isento
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+</div>
+
 <br>
 
 <button (click)="salvar()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored botao">

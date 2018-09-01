@@ -20,3 +20,11 @@ td{
 .align-item{
     margin: 0 auto
 }
+
+.aviso{
+    width: 1000px;
+    text-align: center;
+    background-color: rgb(247, 234, 123);
+    padding: 15px;
+    border-radius: 10px;
+}

@@ -685,7 +685,7 @@
   }
 
   .demo-card-square.mdl-card {
-    width: 267px;
+    width: 250px;
     min-height: 150px;
     display: -webkit-inline-box;
   }
@@ -730,4 +730,3 @@
   .mdl-cell--3-col-desktop{
   width: calc(25% - 38px);
   }
-  

@@ -13,10 +13,10 @@ export class CongregacoesService {
 
   private http: Http;
   private headers: Headers;
-  private urlCadastro: string = 'http://localhost:8080/congregacoes/cadastrar';
-  private urlBuscarPorId: string = 'http://localhost:8080/congregacoes/buscar';
-  private urlExcluir: string = 'http://localhost:8080/congregacoes/excluir';
-  private urlCadastroRelatorioMensal: string = 'http://localhost:8080/financeiro/mensal';
+  private urlCadastro: string = 'http://www.secretariaonlineadmco.com.br//congregacoes/cadastrar';
+  private urlBuscarPorId: string = 'http://www.secretariaonlineadmco.com.br//congregacoes/buscar';
+  private urlExcluir: string = 'http://www.secretariaonlineadmco.com.br//congregacoes/excluir';
+  private urlCadastroRelatorioMensal: string = 'http://www.secretariaonlineadmco.com.br//financeiro/mensal';
   private router: Router;
 
   constructor(http: Http, router: Router) {

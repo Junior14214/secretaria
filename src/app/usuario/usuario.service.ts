@@ -9,7 +9,7 @@ export class UsuarioService {
 
   private http: Http;
   private header: Headers;
-  private url: string = "http://localhost:8080/usuario";
+  private url: string = "http://www.secretariaonlineadmco.com.br//usuario";
 
   constructor(http: Http) {
     this.http = http;
