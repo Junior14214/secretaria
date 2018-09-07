@@ -1,0 +1,51 @@
+<div class="container">
+  <app-alertas></app-alertas>
+  <table class="mdl-data-table mdl-js-data-table">
+    <tr>
+      <td colspan="2">
+        <div class="example-container">
+          <mat-form-field>
+            <input type="password" [(ngModel)]="senhaAntiga" matInput placeholder="Senha Antiga">
+          </mat-form-field>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+
+        <div class="example-container">
+          <mat-form-field>
+            <input type="password"  [(ngModel)]="novaSenha" matInput placeholder="Nova Senha">
+          </mat-form-field>
+        </div>
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" style="text-align: center">
+
+        <div class="example-container">
+          <mat-form-field>
+            <input type="password"  [(ngModel)]="repetirNovaSenha" name="teste" matInput placeholder="Repita a Senha">
+          </mat-form-field>
+        </div>
+        <span *ngIf="novaSenha != repetirNovaSenha && repetirNovaSenha" style="color: red; font-weight: bold; font-size: 10px">Senhas
+          não conferem</span>
+
+      </td>
+    </tr>
+  </table>
+  <div style="margin-top: 5px">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" 
+    style="margin-right: 10px; background-color: #9da1a2" [routerLink]="['']">
+      Cancelar
+    </button>
+    <button (click)="reautenticar()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+      [disabled]="novaSenha != repetirNovaSenha && repetirNovaSenha">
+      Salvar
+    </button>
+  </div>
+
+
+
+</div>

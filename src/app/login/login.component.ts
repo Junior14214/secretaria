@@ -17,6 +17,7 @@ export class LoginComponent {
   login: string;
   senha: string;
   validador: boolean = true;
+  senhaIncorreta: boolean = false;
 
   constructor(public afAuth: AngularFireAuth, private router: Router) {
     this.user = this.afAuth.authState;
@@ -26,7 +27,7 @@ export class LoginComponent {
   hide = true;
 
   getErrorMessage() {
-    return this.email.hasError('required') ? 'You must enter a value' :
+    return this.email.hasError('required') ? 'Insira um email neste campo' :
       this.email.hasError('email') ? 'Favor digitar um email válido' :
         '';
   }
@@ -34,6 +35,14 @@ export class LoginComponent {
   public entrar() {
     firebase.auth().signInWithEmailAndPassword(this.login, this.senha).then(() => {
       this.router.navigate(['']);
+      this.senhaIncorreta = false;
+    }, error => {
+      this.senhaIncorreta = true;
+
+      setTimeout(() => {
+        this.senhaIncorreta = false;
+      }, 5000);
+
     });
   }
 

@@ -27,8 +27,8 @@
         <i class="material-icons">more_vert</i>
       </button>
       <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-        <li class="mdl-menu__item">Sobre</li>
-        <li class="mdl-menu__item">Contato</li>
+        <li class="mdl-menu__item" [routerLink]="['/alterar_dados']">Alterar Dados</li>
+        <li class="mdl-menu__item" [routerLink]="['/alterar_senha']">Alterar Senha</li>
         <li class="mdl-menu__item" (click)="sair()">Sair</li>
       </ul>
     </div>

@@ -30,6 +30,8 @@ import { VisualizarMembroComponent } from './visualizar-membro/visualizar-membro
 import { RelatorioGeralComponent } from './relatorio-geral/relatorio-geral.component';
 import { ContextualizarMembroComponent } from './contextualizar-membro/contextualizar-membro.component';
 import { CongregacoesModule } from './congregacoes/congregacoes.module';
+import { AlteracaoDeSenhaComponent } from './alteracao-de-senha/alteracao-de-senha.component';
+import { AlteracaoDeDadosComponent } from './alteracao-de-dados/alteracao-de-dados.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBkVH-_4pVdyOqtLKh6KuD-38d_qwLvob4",
@@ -47,6 +49,8 @@ export const firebaseConfig = {
     HomeComponent,
     VisualizarMembroComponent,
     ContextualizarMembroComponent,
+    AlteracaoDeSenhaComponent,
+    AlteracaoDeDadosComponent
 
   ],
   imports: [

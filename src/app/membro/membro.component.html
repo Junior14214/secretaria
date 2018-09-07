@@ -1,7 +1,7 @@
 <mat-tab-group>
   <mat-tab label="Cadastro de Membros">
 
-      <app-alertas></app-alertas>
+    <app-alertas></app-alertas>
 
     <div class="div-form">
       <header class="header-form">
@@ -33,7 +33,14 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                  <input matInput [(ngModel)]="membro.sexo" name="sexo" placeholder="Sexo">
+                  <mat-select [(ngModel)]="membro.sexo" name="sexo" placeholder="Sexo">
+                    <mat-option value="M">
+                      Masculino
+                    </mat-option>
+                    <mat-option value="F">
+                      Feminino
+                    </mat-option>
+                  </mat-select>
                 </mat-form-field>
 
                 <mat-form-field>
@@ -113,7 +120,7 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                  <mat-select [(ngModel)]="membro.congregacao" name="congregacao" placeholder="Congregação">
+                  <mat-select [(ngModel)]="membro.congregacao" name="congregacao" placeholder="Congregação" required>
                     <mat-option *ngFor="let item of listaCongregacoes" value="{{item.congregacao}}">
                       {{item.congregacao}}
                     </mat-option>

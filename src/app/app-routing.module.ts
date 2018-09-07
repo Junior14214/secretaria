@@ -1,3 +1,5 @@
+import { AlteracaoDeDadosComponent } from './alteracao-de-dados/alteracao-de-dados.component';
+import { AlteracaoDeSenhaComponent } from './alteracao-de-senha/alteracao-de-senha.component';
 import { CongregacoesComponent } from './congregacoes/congregacoes.component';
 import { ContextualizarMembroComponent } from './contextualizar-membro/contextualizar-membro.component';
 import { RequerimentosComponent } from './requerimentos/requerimentos.component';
@@ -15,6 +17,8 @@ import { AuthGuard } from './auth.guard';
 export const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
+  { path: 'alterar_senha', component: AlteracaoDeSenhaComponent },
+  { path: 'alterar_dados', component: AlteracaoDeDadosComponent },
   { path: 'lista', component: ListaComponent, canActivate: [AuthGuard] },
   { path: 'cadastro', component: MembroComponent, canActivate: [AuthGuard] },
   { path: 'cadastro/:id', component: MembroComponent, canActivate: [AuthGuard] },

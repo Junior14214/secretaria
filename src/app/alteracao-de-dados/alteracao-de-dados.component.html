@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="formulario">
+    <app-alertas></app-alertas>
+
+    <mat-progress-bar mode="query" *ngIf="progressBar"></mat-progress-bar>
+
+    <table class="mdl-data-table mdl-js-data-table">
+      <tbody>
+        <tr>
+          <td rowspan="3">
+            <img src="{{base64textString}}" width="180" height="200" *ngIf="base64textString" style="padding-bottom: 10px">
+            <img src="{{usuario.foto}}" *ngIf="usuario.foto && !base64textString" width="180" height="200" style="padding-bottom: 10px">
+            <br>
+            <label for='selecao-arquivo'>Selecionar Foto</label>
+            <input id='selecao-arquivo' type='file' (change)="handleFileSelect($event)">
+          </td>
+          <td>
+            <mat-form-field>
+              <input [(ngModel)]="usuario.nome" matInput placeholder="Nome">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <input [(ngModel)]="usuario.sobrenome" matInput placeholder="Sobrenome">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <input [(ngModel)]="usuario.endereco" matInput placeholder="Endereço">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <input matInput placeholder="CEP">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <input matInput placeholder="Telefone">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <input [disabled]="true" [(ngModel)]="usuario.email" matInput placeholder="Email">
+            </mat-form-field>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="padding-top: 10px; text-align: -webkit-right">
+      <button style="padding-right: 10px; background-color: #9da1a2" [routerLink]="['']" (click)="alterarUsuario()"
+        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        Cancelar
+      </button>
+      <button (click)="alterarUsuario()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        Salvar
+      </button>
+    </div>
+
+
+  </div>
+</div>

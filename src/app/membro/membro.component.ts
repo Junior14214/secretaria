@@ -45,21 +45,27 @@ export class MembroComponent implements OnInit {
 
     event.preventDefault();
 
-    this.service
-      .salvar(this.membro)
-      .subscribe(res => {
-        if (this.membro.id) {
-          this.globals.abrirAlerta('success', 'Membro alterado com sucesso!');
-        } else {
-          this.globals.abrirAlerta('success', 'Membro cadastrado com sucesso');
-        }
-        this.membro = new Membros();
-        this.membro.situacao = 'Pre Cadastro';
-        this.base64textString = '';
+    if (this.membro.congregacao) {
+      this.service
+        .salvar(this.membro)
+        .subscribe(res => {
+          if (this.membro.id) {
+            this.globals.abrirAlerta('success', 'Membro alterado com sucesso!');
+          } else {
+            this.globals.abrirAlerta('success', 'Membro cadastrado com sucesso');
+          }
+          this.membro = new Membros();
+          this.membro.situacao = 'Pre Cadastro';
+          this.base64textString = '';
 
-      }, erro => {
-        this.globals.abrirAlerta('error', 'Não foi possível cadastrar o membro ' + erro);
-      })
+        }, erro => {
+          this.globals.abrirAlerta('error', 'Não foi possível cadastrar o membro ' + erro);
+        });
+    } else {
+      this.globals.abrirAlerta('warning', 'Por favor selecione uma congregação.');
+    }
+
+
   }
 
   handleFileSelect(evt) {

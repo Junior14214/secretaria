@@ -43,7 +43,7 @@ export class DizimistaComponent implements OnInit {
       mesFormatado = '0' + (mes + 1);
     }
 
-    this.dizimista.data = this.data.getFullYear() + '/' + mesFormatado + '/' + this.data.getDate();
+    this.dizimista.data = this.data.getFullYear() + '/' + mesFormatado + '/' + dia;
     console.log('data', this.dizimista.data);
     this.dizimista.congregacao = this.globals.informacoesUsuarioLogado.congregacao;
     this.lista.push(this.dizimista);
